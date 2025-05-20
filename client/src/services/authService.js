@@ -4,11 +4,16 @@ const API_URL = 'http://localhost:5000/auth';
 
 export const signup = async ({ username, email, password }) => {
   try {
-    const response = await axios.post(`${API_URL}/signup`, {
-      username,
-      email,
-      password,
-    });
+    const response = await axios.post(
+      `${API_URL}/signup`,
+      { username, email, password },
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
     return response.data;
   } catch (error) {
     const message =
@@ -19,10 +24,16 @@ export const signup = async ({ username, email, password }) => {
 
 export const login = async ({ email, password }) => {
   try {
-    const response = await axios.post(`${API_URL}/login`, {
-      email,
-      password,
-    });
+    const response = await axios.post(
+      `${API_URL}/login`,
+      { email, password },
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
     return response.data;
   } catch (error) {
     const message =

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 
-const InputField = ({ label, placeholder, type = "text", isPassword = false }) => {
+const InputField = ({ label, placeholder, type = "text", isPassword = false  , value , onChange}) => {
     const [visible, setVisible] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -20,6 +20,8 @@ const InputField = ({ label, placeholder, type = "text", isPassword = false }) =
                 <input
                     type={isPassword ? (visible ? "text" : "password") : type}
                     placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
                     style={isMobile ? styles.inputSmall : styles.input}
                 />
                 {isPassword && (

@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Authentication from './pages/Authentication';
 import TrashResultPage from './pages/TrashResultPage';
 import Header from './components/Header';
-
+import { AuthProvider } from './context/AuthContext'
 const App = () => {
   const isAuthenticated = true;
 
   return (
+    <AuthProvider>
     <Router>
       <Header isAuthenticated={isAuthenticated} />
       <Routes>
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="*" element={<Navigate to="/auth" />} />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 };
 
