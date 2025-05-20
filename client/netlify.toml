@@ -3,3 +3,9 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+
+ public/_headers :
+
+/sw.js
+  Cache-Control: no-cache
