@@ -1,10 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState  , useContext} from 'react';
 import InputField from '../components/Auth/InputField';
 import Button from '../components/Auth/Button';
+import { signup, login as loginService } from '../services/authService';
+import { AuthContext } from '../context/AuthContext';
 
 const Authentication = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isSignUpMobile, setIsSignUpMobile] = useState(false);
+    
+    const [signupEmail, setSignupEmail] = useState('');
+    const [signupPassword, setSignupPassword] = useState('');
+
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+    const [username, setUsername] = useState('');
+
+    
+    const { isAuthenticated, login } = useContext(AuthContext);
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -15,6 +28,32 @@ const Authentication = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const handleSignup = async () => {
+        try {
+          const data = await signup({ username, email: signupEmail, password: signupPassword });
+        } catch (error) {
+          console.log
+          (error.message);
+        }
+      };
+    
+      const handleLogin = async () => {
+        if (!loginEmail || !loginPassword) {
+            alert('Email et mot de passe requis pour ce connecter')
+        }
+        try {
+          const data = await loginService({ email: loginEmail, password: loginPassword });
+          login({ token: data.token, user_id: data.user_id });
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+      
+
+  if (isAuthenticated) {
+    return <h2 style={{ textAlign: 'center' }}>Vous etes co (message de test pour l'instant)</h2>;
+  }
+
     return (
         <div style={styles.authContainer}>
             {!isMobile && <h1 style={styles.authTitle}>Rejoignez-nous</h1>}
@@ -24,11 +63,11 @@ const Authentication = () => {
                     <>
                         <div style={{ ...styles.formContainer, ...styles.left }}>
                             <h2 style={styles.subtitle}>Créez-votre compte</h2>
-                            <InputField label="Pseudo" placeholder="ArthurLaTutur" />
-                            <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" />
-                            <InputField label="Mot de passe" type="password" placeholder="********" isPassword />
+                            <InputField label="Pseudo" placeholder="ArthurLaTutur" value={username} onChange={(e) => setUsername(e.target.value)} />
+                            <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
+                            <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                             <div style={styles.buttonWrapper}>
-                                <Button label="S'inscrire" />
+                                <Button label="S'inscrire" onClick={handleSignup} />
                             </div>
                         </div>
                         <div style={styles.separator} />
@@ -38,10 +77,10 @@ const Authentication = () => {
                 {(!isMobile || !isSignUpMobile) && (
                     <div style={{ ...styles.formContainer, ...styles.right }}>
                         <h2 style={styles.subtitle}>Connectez-vous</h2>
-                        <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" />
-                        <InputField label="Mot de passe" type="password" placeholder="********" isPassword />
+                        <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
+                        <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
                         <div style={styles.buttonWrapper}>
-                            <Button label="Se connecter" variant="outlined" />
+                            <Button label="Se connecter" variant="outlined" onClick={handleLogin} />
                         </div>
                         {isMobile && (
                             <div style={{ marginTop: '10px' }}>
@@ -58,11 +97,11 @@ const Authentication = () => {
                 {isMobile && isSignUpMobile && (
                     <div style={{ ...styles.formContainer, ...styles.left }}>
                         <h2 style={styles.subtitle}>Créez-votre compte</h2>
-                        <InputField label="Pseudo" placeholder="ArthurLaTutur" />
-                        <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" />
-                        <InputField label="Mot de passe" type="password" placeholder="********" isPassword />
+                        <InputField label="Pseudo" placeholder="ArthurLaTutur" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
+                        <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                         <div style={styles.buttonWrapper}>
-                            <Button label="S'inscrire" />
+                        <Button label="S'inscrire" onClick={handleSignup} /> 
                         </div>
                         <div style={{ marginTop: '10px' }}>
                             <Button
