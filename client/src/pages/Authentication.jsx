@@ -116,7 +116,7 @@ const Authentication = () => {
 
             <div style={styles.authIllustration}>
                 <img
-                    src="/src/assets/Together-cuate 1 (1).svg"
+                    src="/Together-cuate 1 (1).svg"
                     alt="Illustration"
                     style={{
                         width: isMobile ? '250px' : '350px',

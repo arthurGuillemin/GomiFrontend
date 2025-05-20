@@ -1,8 +1,8 @@
 import React from 'react';
-import grey from '../../assets/grey.svg';
-import brown from '../../assets/brown.svg';
-import green from '../../assets/green.svg';
-import yellow from '../../assets/yellow.svg';
+import grey from '/grey.svg';
+import brown from '/brown.svg';
+import green from '/green.svg';
+import yellow from '/yellow.svg';
 
 const images = {
   grise: grey,

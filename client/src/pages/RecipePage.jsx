@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import eatingWoman from '../assets/eating-woman.svg';
+import eatingWoman from '/eating-woman.svg';
 
 const RecipePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

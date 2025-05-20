@@ -20,7 +20,7 @@ const Header = ({ isAuthenticated = false }) => {
         <header style={styles.header}>
             <div style={styles.logoContainer}>
                 <img
-                    src="/src/assets/logo.svg"
+                    src="/logo.svg"
                     alt="Logo"
                     style={styles.logo}
                 />
