@@ -1,5 +1,5 @@
 import React from 'react';
-import contactIllustration from '../../public/contact.svg';
+import contactIllustration from '/contact.svg';
 
 const ContactPage = () => {
     return (
