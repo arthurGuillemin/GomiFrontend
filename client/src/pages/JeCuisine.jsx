@@ -1,11 +1,20 @@
-
-import React from 'react';
+import React, {useContext , useEffect } from 'react';
 import FoodieGirly from '/foodieGirly.svg';
 import '../assets/global.css';
+import { FiSearch } from 'react-icons/fi';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import ImageSearch from '../components/imageSearch.jsx';
 
-
 const JeCuisine = () => {
+      const { isAuthenticated } = useContext(AuthContext);
+      const navigate = useNavigate();
+    
+        useEffect(() => {
+        if (!isAuthenticated) {
+          navigate('/auth');
+        }
+      }, [isAuthenticated, navigate]);
   return (
     <div>
         <article  className='jeCuisineHome'>

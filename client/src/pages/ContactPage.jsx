@@ -1,8 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , useContext } from 'react';
 import contactIllustration from '/contact.svg';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const ContactPage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+    useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/auth');
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const handleResize = () => {
