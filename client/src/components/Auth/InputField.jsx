@@ -65,11 +65,11 @@ const styles = {
         outline: 'none',
     },
     inputSmall: {
-        width: '400px',
+        width: '250px',
         border: 'none',
         borderBottom: '1px solid #38A3A5',
         padding: '5px 0',
-        fontSize: '14px',
+        fontSize: '12px',
         fontWeight: '600',
         outline: 'none',
     },
