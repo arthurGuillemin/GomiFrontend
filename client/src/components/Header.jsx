@@ -48,6 +48,7 @@ const Header = () => {
                             <a href="/je-trie" style={styles.navLink}>Poubelle</a>
                             <a href="/je-cuisine" style={styles.navLink}>Frigo</a>
                             <a href="/contact" style={styles.navLink}>Contact</a>
+                            <a href="/profil" style={styles.navLink}>Profile</a>
                         </nav>
                     )}
                 </>
@@ -64,6 +65,7 @@ const Header = () => {
                         <a href="/je-trie" style={styles.navLink}>Poubelle</a>
                         <a href="/je-cuisine" style={styles.navLink}>Frigo</a>
                         <a href="/contact" style={styles.navLink}>Contact</a>
+                        <a href="/profil" style={styles.navLink}>Profile</a>
                     </nav>
                 </>
             )}
@@ -130,7 +132,7 @@ const styles = {
         gap: '10px',
     },
     navLink: {
-        fontSize: '1rem',
+        fontSize: '18px',
         textDecoration: 'none',
         color: '#333',
         fontFamily: "'Josefin Sans', sans-serif",

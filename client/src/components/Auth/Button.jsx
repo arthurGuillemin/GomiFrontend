@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../App.css';
 
-const Button = ({ label, variant = "filled", onClick }) => {
+const Button = ({ label, variant = "filled", onClick, customStyle = {} }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     useEffect(() => {
@@ -18,12 +18,14 @@ const Button = ({ label, variant = "filled", onClick }) => {
                 ...styles.button,
                 ...(variant === "outlined" ? styles.outlined : styles.filled),
                 width: isMobile ? '250px' : '350px',
-                height: isMobile ? '35px' : '55px',
+                height: isMobile ? '35px' : '45px',
+                ...customStyle,
             }}
             onClick={onClick}
         >
             {label}
         </button>
+
     );
 };
 
