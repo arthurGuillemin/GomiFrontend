@@ -10,6 +10,7 @@ import JeCuisine from './pages/JeCuisine';
 import { AuthProvider } from './context/AuthContext'
 import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
+import WasteClassifier from './pages/test';
 const App = () => {
   return (
     <AuthProvider>
@@ -24,6 +25,8 @@ const App = () => {
         <Route path="/je-trie" element={<JeTrie />} /> 
         <Route path="/je-cuisine" element={<JeCuisine />} />
         <Route path="/profil" element={<ProfilePage />} />
+        <Route path="/test" element={<WasteClassifier/>} />
+
         <Route path="*" element={<Navigate to="/auth" />} />
       </Routes>
     </Router>
