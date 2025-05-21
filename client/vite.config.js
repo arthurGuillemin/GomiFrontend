@@ -8,9 +8,6 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: [
-        "favicon.svg",
-        "apple-touch-icon.png",
-        "masked-icon.svg",
         "icon192.png",
         "icon512.png"
       ],
