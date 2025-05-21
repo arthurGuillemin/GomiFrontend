@@ -7,9 +7,9 @@ import { VitePWA } from 'vite-plugin-pwa';export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "apple-touch-icon.png", "masked-icon.svg"],
       manifest: {
-        name: "Personal Board",
-        short_name: "Board",
-        description: "Une app de gestion de tâches et de lectures",
+        name: "Gomi",
+        short_name: "Gomi",
+        description: "Application Gomi",
         theme_color: "#4caf50",
         background_color: "#ffffff",
         display: "standalone",
