@@ -1,8 +1,8 @@
 
 import React from 'react';
-import FoodieGirly from '../assets/foodieGirly.svg';
+import FoodieGirly from '/foodieGirly.svg';
 import '../assets/global.css';
-import { FiSearch } from 'react-icons/fi';
+import ImageSearch from '../components/imageSearch.jsx';
 
 
 const JeCuisine = () => {
@@ -14,16 +14,7 @@ const JeCuisine = () => {
                     <h1>Je cuisine</h1>
                     <p>Prenez une photo de l’intérieur de votre frigo et découvrez automatiquement les ingrédients détectés. Une façon simple et rapide de garder un œil sur ce que vous avez, éviter le gaspillage et trouver des idées de recettes adaptées à ce que vous avez sous la main !</p>
                 </div>
-                <div className="searchContainer">
-                    <input
-                        type="text"
-                        placeholder="Rechercher mon frigo..."
-                        className="searchInput"
-                        />
-                    <button className="searchButton">
-                    <FiSearch size={20} />
-                    </button>
-                </div>
+                <ImageSearch />
             </section>
             <section>
                 <img src={FoodieGirly}  />

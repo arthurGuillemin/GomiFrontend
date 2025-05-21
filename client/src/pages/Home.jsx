@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import EarthGirl from '../assets/earthGirl.svg';
-import TrashyFriends from '../assets/trashyFriends.svg';
-import FoodieGirly from '../assets/foodieGirly.svg';
+import EarthGirl from '/earthGirl.svg';
+import TrashyFriends from '/trashyFriends.svg';
+import FoodieGirly from '/foodieGirly.svg';
 import '../assets/global.css';
 
 
