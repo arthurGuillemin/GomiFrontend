@@ -1,88 +1,82 @@
-
 body {
-    font-family: 'Josefin Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #1a1a1a;
+  font-family: "Josefin Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1a1a1a;
 }
 
 article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10% 15%;
-    min-height: 100vh;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10% 15%;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .mainHome {
-    background-color:rgb(128, 237, 153, 0.05);
+  background-color: rgb(128, 237, 153, 0.05);
 }
 
 .jeTrieHome {
-    background-color: rgb(186, 104, 200, 0.05);
+  background-color: rgb(186, 104, 200, 0.05);
 }
 
 .jeCuisineHome {
-    background-color: rgb(255, 193, 0, 0.05);
+  background-color: rgb(255, 193, 0, 0.05);
 }
 
 section {
-    flex: 1;
-    min-width: 280px;
+  flex: 1;
+  min-width: 280px;
 }
-
 
 h1 {
-    font-size: 60px;
-    font-weight: bold;
-    margin: 0;
+  font-size: 60px;
+  font-weight: bold;
+  margin: 0;
 }
-
 
 p {
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 20px;
-    line-height: 1.5;
-    max-width: 600px;
-    margin: 30px 0;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 30px 0;
 }
 
-.mainHome p{
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 20px;
-    line-height: 1.5;
-    max-width: 450px;
-    margin: 30px 0;
+.mainHome p {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  max-width: 450px;
+  margin: 30px 0;
 }
 
 .mainHome button {
-    background-color: #5be189;
-    color: black;
-    border: none;
-    padding: 10px 60px;
-    font-size: 15px;
-    border-radius: 20px;
-    cursor: pointer;
+  background-color: #5be189;
+  color: black;
+  border: none;
+  padding: 10px 60px;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-button{
-    color: #3F56ED;
-    border: none;
-    background-color: transparent;
-    font-size: 15px;
-    cursor: pointer;
+button {
+  color: #3f56ed;
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  cursor: pointer;
 }
-
 
 img {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
 }
-
 
 .jeCuisineHome img {
     width: 100%;
