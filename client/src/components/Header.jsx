@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext } from 'react';
 import { Menu } from 'lucide-react';
+import { AuthContext } from '../context/AuthContext';
 
-const Header = ({ isAuthenticated = false }) => {
+const Header = () => {
+    const { isAuthenticated } = useContext(AuthContext); 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 

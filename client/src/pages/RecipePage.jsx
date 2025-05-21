@@ -1,8 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , useContext } from 'react';
 import eatingWoman from '/eating-woman.svg';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const RecipePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const { isAuthenticated } = useContext(AuthContext);
+    const navigate = useNavigate();
+  
+      useEffect(() => {
+      if (!isAuthenticated) {
+        navigate('/auth');
+      }
+    }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);

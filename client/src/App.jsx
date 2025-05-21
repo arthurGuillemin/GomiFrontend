@@ -10,12 +10,10 @@ import JeCuisine from './pages/JeCuisine';
 import { AuthProvider } from './context/AuthContext'
 import ContactPage from './pages/ContactPage';
 const App = () => {
-  const isAuthenticated = true;
-
   return (
     <AuthProvider>
     <Router>
-      <Header isAuthenticated={isAuthenticated} />
+      <Header isAuthenticated={AuthProvider} />
       <Routes>
         <Route path="/auth" element={<Authentication />} />
         <Route path="/" element={<Home />} />

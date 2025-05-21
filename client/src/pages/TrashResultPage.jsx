@@ -1,10 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , useContext } from 'react';
 import TrashFullPage from '../components/TrashResult/TrashFullPage';
 import TrashPopup from '../components/TrashResult/TrashPopup';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const TrashResultPage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [showPopup, setShowPopup] = useState(true);
+      const { isAuthenticated } = useContext(AuthContext);
+      const navigate = useNavigate();
+    
+        useEffect(() => {
+        if (!isAuthenticated) {
+          navigate('/auth');
+        }
+      }, [isAuthenticated, navigate]);
+  
 
   const trashName = "plastique";
   const color = "grise";
