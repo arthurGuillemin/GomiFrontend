@@ -18,26 +18,33 @@ const Header = ({ isAuthenticated = false }) => {
 
     return (
         <header style={styles.header}>
-            <div style={styles.logoContainer}>
-                <img
-                    src="/logo.svg"
-                    alt="Logo"
-                    style={styles.logo}
-                />
-                <span style={styles.logoText}>Gomi</span>
-            </div>
+            <a href="/" style={{ textDecoration: 'none' }}>
+                <div
+                    style={{
+                        ...styles.logoContainer,
+                        ...(isMobile && { marginLeft: '-35px' })
+                    }}
+                >
+                    <img
+                        src="/logo.svg"
+                        alt="Logo"
+                        style={styles.logo}
+                    />
+                    <span style={styles.logoText}>Gomi</span>
+                </div>
+            </a>
 
             {isAuthenticated && (
                 <>
                     {isMobile ? (
                         <div style={styles.burgerMenu} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                            <Menu size={28} />
+                            <Menu size={30} />
                         </div>
                     ) : (
                         <nav style={styles.nav}>
                             <a href="/" style={styles.navLink}>Accueil</a>
-                            <a href="/poubelle" style={styles.navLink}>Poubelle</a>
-                            <a href="/frigo" style={styles.navLink}>Frigo</a>
+                            <a href="/je-trie" style={styles.navLink}>Poubelle</a>
+                            <a href="/je-cuisine" style={styles.navLink}>Frigo</a>
                             <a href="/contact" style={styles.navLink}>Contact</a>
                         </nav>
                     )}
@@ -45,12 +52,18 @@ const Header = ({ isAuthenticated = false }) => {
             )}
 
             {isMenuOpen && (
-                <nav style={styles.navMobile}>
-                    <a href="/" style={styles.navLink}>Accueil</a>
-                    <a href="/poubelle" style={styles.navLink}>Poubelle</a>
-                    <a href="/frigo" style={styles.navLink}>Frigo</a>
-                    <a href="/contact" style={styles.navLink}>Contact</a>
-                </nav>
+                <>
+                    <div
+                        style={styles.overlay}
+                        onClick={() => setIsMenuOpen(false)}
+                    />
+                    <nav style={styles.navMobile}>
+                        <a href="/" style={styles.navLink}>Accueil</a>
+                        <a href="/je-trie" style={styles.navLink}>Poubelle</a>
+                        <a href="/je-cuisine" style={styles.navLink}>Frigo</a>
+                        <a href="/contact" style={styles.navLink}>Contact</a>
+                    </nav>
+                </>
             )}
         </header>
     );
@@ -93,25 +106,42 @@ const styles = {
     burgerMenu: {
         display: 'block',
         cursor: 'pointer',
+        marginTop: '10px'
     },
     navMobile: {
         display: 'flex',
         flexDirection: 'column',
         position: 'absolute',
-        top: '60px',
-        right: '10px',
+        top: '80px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '85%',
         backgroundColor: '#fff',
         border: '1px solid #e5e5e5',
-        borderRadius: '8px',
-        padding: '10px',
+        borderBottomLeftRadius: '8px',
+        borderBottomRightRadius: '8px',
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        padding: '15px 20px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
         zIndex: 1000,
+        gap: '10px',
     },
     navLink: {
         fontSize: '1rem',
         textDecoration: 'none',
         color: '#333',
         fontFamily: "'Josefin Sans', sans-serif",
-        marginBottom: '10px',
+        textAlign: 'center',
+    },
+    overlay: {
+        position: 'fixed',
+        top: 80,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        zIndex: 999,
     },
 };
 

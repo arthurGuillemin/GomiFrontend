@@ -18,7 +18,7 @@ const Button = ({ label, variant = "filled", onClick }) => {
                 ...styles.button,
                 ...(variant === "outlined" ? styles.outlined : styles.filled),
                 width: isMobile ? '250px' : '350px',
-                height: isMobile ? '45px' : '55px',
+                height: isMobile ? '35px' : '55px',
             }}
             onClick={onClick}
         >
