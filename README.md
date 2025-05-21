@@ -1,1 +1,1 @@
-Frontent opur le projet de python back
+Front de l'app Gomi
