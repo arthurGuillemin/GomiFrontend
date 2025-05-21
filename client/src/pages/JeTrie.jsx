@@ -11,7 +11,7 @@ const JeTrie = () => {
       const navigate = useNavigate();
     
         useEffect(() => {
-        if (!isAuthenticated) {
+        if (isAuthenticated === false) {
           navigate('/auth');
         }
       }, [isAuthenticated, navigate]);
