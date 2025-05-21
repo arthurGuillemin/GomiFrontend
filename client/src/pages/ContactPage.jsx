@@ -16,13 +16,13 @@ const ContactPage = () => {
     page: {
       display: 'flex',
       flexDirection: isMobile ? 'column' : 'row',
-      padding: isMobile ? '20px' : '50px',
+      padding: isMobile ? '20px' : '150px',
       alignItems: 'center',
       justifyContent: 'center',
       textAlign: isMobile ? 'center' : 'left',
     },
     image: {
-      maxWidth: isMobile ? '70%' : '400px',
+      maxWidth: isMobile ? '70%' : '500px',
       width: '100%',
       marginBottom: isMobile ? '20px' : 0,
     },

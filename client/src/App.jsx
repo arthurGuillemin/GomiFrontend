@@ -9,24 +9,26 @@ import JeTrie from './pages/JeTrie';
 import JeCuisine from './pages/JeCuisine';
 import { AuthProvider } from './context/AuthContext'
 import ContactPage from './pages/ContactPage';
+import ProfilePage from './pages/ProfilePage';
 const App = () => {
   const isAuthenticated = true;
 
   return (
     <AuthProvider>
-    <Router>
-      <Header isAuthenticated={isAuthenticated} />
-      <Routes>
-        <Route path="/auth" element={<Authentication />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/trash" element={<TrashResultPage />} />
-        <Route path="/recipe" element={<RecipePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/je-trie" element={<JeTrie />} /> 
-        <Route path="/je-cuisine" element={<JeCuisine />} />
-        <Route path="*" element={<Navigate to="/auth" />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Header isAuthenticated={isAuthenticated} />
+        <Routes>
+          <Route path="/auth" element={<Authentication />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/trash" element={<TrashResultPage />} />
+          <Route path="/recipe" element={<RecipePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/je-trie" element={<JeTrie />} />
+          <Route path="/je-cuisine" element={<JeCuisine />} />
+          <Route path="/profil" element={<ProfilePage />} />
+          <Route path="*" element={<Navigate to="/auth" />} />
+        </Routes>
+      </Router>
     </AuthProvider>
   );
 };
