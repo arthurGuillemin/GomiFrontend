@@ -63,7 +63,7 @@ p {
 
 .mainHome button {
   background-color: #5be189;
-  color: black;
+  color: white;
   border: none;
   padding: 10px 60px;
   font-size: 15px;
@@ -76,6 +76,16 @@ button {
   border: none;
   background-color: transparent;
   font-size: 15px;
+  cursor: pointer;
+}
+
+.startBtn {
+  background-color: #5be189;
+  color: white;
+  border: none;
+  padding: 10px 60px;
+  font-size: 15px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -209,4 +219,14 @@ img {
   100% {
     opacity: 0.5;
   }
+}
+
+.contact-link {
+  text-decoration: none;
+  color: #34C759;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #80ED99;
 }
