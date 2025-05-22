@@ -4,7 +4,7 @@ import '../assets/global.css';
 import { FiSearch } from 'react-icons/fi';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import ImageSearch from '../components/imageSearch.jsx';
+import ImageSearch from '../components/ImageSearch.jsx';
 
 const JeCuisine = () => {
       const { isAuthenticated } = useContext(AuthContext);
