@@ -73,6 +73,12 @@ const JeTrie = () => {
     setUseFullPage(false);
   };
 
+  const resetPreview = () => {
+    setPreviewUrl('');
+    setPopupData(null);
+    setError('');
+  };
+
   return (
     <div>
       <article className="jeTrieHome">
@@ -90,22 +96,24 @@ const JeTrie = () => {
           <ImageSearch onSend={handleSend} />
 
           {previewUrl && (
-            <img
-              src={previewUrl}
-              alt="Aperçu du déchet"
-              style={{ maxWidth: '300px', marginTop: '10px', borderRadius: '10px' }}
-            />
+            <div className="preview-container">
+              <img
+                src={previewUrl}
+                alt="Aperçu du déchet"
+                className="preview-image"
+              />
+              <button className="close-preview-button" onClick={resetPreview}>×</button>
+            </div>
           )}
 
-          {loading && <p>Analyse en cours...</p>}
+          {loading && <p className="loadingText">Analyse en cours...</p>}
           {error && <p className="errorText">{error}</p>}
         </section>
-                              <section>
-                <img src={TrashyFriends}  />
-            </section>
+        <section>
+          <img src={TrashyFriends}  />
+        </section>
       </article>
 
-      {/* Popup */}
       {popupData && !useFullPage && (
         <TrashPopup
           trashName={popupData.trashName}
@@ -114,7 +122,6 @@ const JeTrie = () => {
         />
       )}
 
-      {/* Full page */}
       {popupData && useFullPage && (
         <TrashFullPage
           trashName={popupData.trashName}

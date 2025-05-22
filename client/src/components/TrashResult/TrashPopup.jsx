@@ -18,12 +18,14 @@ const TrashPopup = ({ trashName, color, onClose }) => {
     <div style={styles.overlay}>
       <div style={styles.modal}>
         <button onClick={onClose} style={styles.closeButton}>✕</button>
-        <h1 style={styles.title}>Je trie</h1>
+        <h2 style={styles.title}>Je trie</h2>
+        <div style={styles.centeredIllustration}>
         <TrashIllustration color={color} />
+        </div>
         <p style={styles.description}>
           Votre déchet en <strong>{trashName}</strong> va dans la poubelle
         </p>
-        <h2 style={{ fontFamily: "'Josefin Sans', sans-serif", color: getColor(color), fontSize: '40px' }}>
+        <h2 style={{ fontFamily: "'Josefin Sans', sans-serif", color: getColor(color) }}>
           {capitalize(color)}
         </h2>
       </div>
@@ -60,8 +62,9 @@ const styles = {
     right: '12px',
     border: 'none',
     background: 'transparent',
-    fontSize: '20px',
+    fontSize: '25px',
     cursor: 'pointer',
+    color: '#B460C1',
   },
   title: {
     color: '#B460C1',
@@ -71,10 +74,16 @@ const styles = {
   },
   description: {
     fontSize: '20px',
+    marginBottom:  0,
   },
   trashColor: {
     fontWeight: 'bold',
     fontSize: '18px',
+  },
+  centeredIllustration: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '20px',
   },
 };
 

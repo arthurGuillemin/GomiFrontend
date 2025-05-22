@@ -7,7 +7,7 @@ import yellow from '/yellow.svg';
 const images = { grise: grey, marron: brown, verte: green, jaune: yellow };
 
 const TrashIllustration = ({ color }) => (
-  <img src={images[color]} alt={`Poubelle ${color}`} style={{ width: '300px' }} />
+  <img src={images[color]} alt={`Poubelle ${color}`} style={{ width: '200px' }} />
 );
 
 export default TrashIllustration;
