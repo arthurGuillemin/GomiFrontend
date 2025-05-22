@@ -31,10 +31,7 @@ const TrashResultPage = () => {
 
   if (!showPopup && !isMobile) return null;
 
-  return isMobile ? (
-    <TrashFullPage trashName={trashName} color={color} />
-  ) : (
-    showPopup && <TrashPopup trashName={trashName} color={color} onClose={() => setShowPopup(false)} />
+  return ( <TrashPopup trashName={trashName} color={color} onClose={() => setShowPopup(false)} />
   );
 };
 
