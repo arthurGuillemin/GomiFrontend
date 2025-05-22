@@ -13,9 +13,6 @@ export async function generateRecipesFromImage(imageFile) {
 
     const { ingredients, recette } = response.data;
 
-    if (!ingredients || !recette) {
-      throw new Error("Réponse incomplète ou invalide depuis le serveur");
-    }
 
     return {
       ingredients,
