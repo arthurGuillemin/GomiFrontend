@@ -1,17 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TrashIllustration from './TrashIllustration';
 
 const TrashPopup = ({ trashName, color, onClose }) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const getColor = (color) => {
     switch (color) {
       case 'grise': return '#A9B1B7';
@@ -26,36 +16,16 @@ const TrashPopup = ({ trashName, color, onClose }) => {
 
   return (
     <div style={styles.overlay}>
-      <div style={{
-        ...styles.modal,
-        width: isMobile ? '60%' : '400px',
-        padding: isMobile ? '20px' : '30px',
-      }}>
+      <div style={styles.modal}>
         <button onClick={onClose} style={styles.closeButton}>✕</button>
-        <h1 style={{
-          ...styles.title,
-          fontSize: isMobile ? '20px' : '40px',
-          textAlign: 'left',
-        }}>Je trie</h1>
-
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <TrashIllustration color={color} />
+        <h2 style={styles.title}>Je trie</h2>
+        <div style={styles.centeredIllustration}>
+        <TrashIllustration color={color} />
         </div>
-
-        <p style={{
-          ...styles.description,
-          fontSize: isMobile ? '14px' : '20px',
-          margin: isMobile ? '5px 0' : '15px 0',
-        }}>
+        <p style={styles.description}>
           Votre déchet en <strong>{trashName}</strong> va dans la poubelle
         </p>
-
-        <h2 style={{
-          fontFamily: "'Josefin Sans', sans-serif",
-          color: getColor(color),
-          fontSize: isMobile ? '28px' : '40px',
-          margin: 0,
-        }}>
+        <h2 style={{ fontFamily: "'Josefin Sans', sans-serif", color: getColor(color) }}>
           {capitalize(color)}
         </h2>
       </div>
@@ -75,12 +45,14 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 1000,
-    padding: '10px',
   },
   modal: {
     position: 'relative',
     background: 'white',
     borderRadius: '12px',
+    padding: '30px',
+    width: '400px',
+    maxWidth: '90%',
     boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
   },
@@ -90,20 +62,28 @@ const styles = {
     right: '12px',
     border: 'none',
     background: 'transparent',
-    fontSize: '20px',
+    fontSize: '25px',
     cursor: 'pointer',
     color: '#B460C1',
   },
   title: {
     color: '#B460C1',
+    textAlign: 'left',
+    marginBottom: '20px',
     fontFamily: "'Josefin Sans', sans-serif",
   },
   description: {
     fontSize: '20px',
+    marginBottom:  0,
   },
   trashColor: {
     fontWeight: 'bold',
     fontSize: '18px',
+  },
+  centeredIllustration: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '20px',
   },
 };
 

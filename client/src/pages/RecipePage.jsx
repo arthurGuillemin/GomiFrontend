@@ -9,7 +9,7 @@ const RecipePage = () => {
     const navigate = useNavigate();
   
       useEffect(() => {
-      if (isAuthenticated === false) {
+      if (isAuthenticated != true) {
         navigate('/auth');
       }
     }, [isAuthenticated, navigate]);

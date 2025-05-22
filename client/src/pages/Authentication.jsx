@@ -3,6 +3,7 @@ import InputField from '../components/Auth/InputField';
 import Button from '../components/Auth/Button';
 import { signup, login as loginService } from '../services/authService';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Authentication = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -14,6 +15,9 @@ const Authentication = () => {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [username, setUsername] = useState('');
+
+    const navigate = useNavigate();
+
 
 
     const { isAuthenticated, login } = useContext(AuthContext);
@@ -51,7 +55,7 @@ const Authentication = () => {
 
 
     if (isAuthenticated) {
-        return <h2 style={{ textAlign: 'center' }}>Vous etes co (message de test pour l'instant)</h2>;
+        navigate('/'); 
     }
 
     return (
@@ -63,8 +67,8 @@ const Authentication = () => {
                     <>
                         <div style={{ ...styles.formContainer, ...styles.left }}>
                             <h2 style={styles.subtitle}>Créez-votre compte</h2>
-                            <InputField label="Pseudo" placeholder="ArthurLaTutur" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
+                            <InputField label="Pseudo" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                            <InputField label="Email" placeholder="example@domain.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
                             <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                             <div style={styles.buttonWrapper}>
                                 <Button label="S'inscrire" onClick={handleSignup} />
@@ -77,7 +81,7 @@ const Authentication = () => {
                 {(!isMobile || !isSignUpMobile) && (
                     <div style={{ ...styles.formContainer, ...styles.right }}>
                         <h2 style={styles.subtitle}>Connectez-vous</h2>
-                        <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
+                        <InputField label="Email" placeholder="example@domain.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
                         <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
                         <div style={styles.buttonWrapper}>
                             <Button label="Se connecter" variant="outlined" onClick={handleLogin} />

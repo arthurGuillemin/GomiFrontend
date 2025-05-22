@@ -20,6 +20,8 @@ article {
 
 .jeTrieHome {
   background-color: rgb(186, 104, 200, 0.05);
+  margin-top: -80px;
+  height: '100%';
 }
 
 .jeCuisineHome {
@@ -33,6 +35,12 @@ section {
 
 h1 {
   font-size: 60px;
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  font-size: 35px;
   font-weight: bold;
   margin: 0;
 }
@@ -89,78 +97,128 @@ img {
 }
 
 .jeCuisineHome img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .searchContainer {
-    display: flex;
-    align-items: center;
-    margin: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .inputWrapper {
-    display: flex;
-    border-radius: 15px;
-    overflow: hidden;
-    width: 500px;
-    height: 50px;
+  display: flex;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 500px;
+  height: 50px;
 }
 
 .jeCuisineHome .inputWrapper {
-    border: 3px solid #ffc107;
+  border: 3px solid #ffc107;
 }
 
 .jeTrieHome .inputWrapper {
-    border: 3px solid #BA68C8;
+  border: 3px solid #ba68c8;
 }
 
 .fileInputLabel {
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    flex: 1;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  flex: 1;
+  cursor: pointer;
 }
 
 .fileInput {
-    display: none;
+  display: none;
 }
 
 .sendButton {
-    border: none;
-    width: 60px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  border: none;
+  width: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .jeCuisineHome .sendButton {
-    background-color: #ffc107;
+  background-color: #ffc107;
 }
 
 .jeTrieHome .sendButton {
-    background-color: #BA68C8;
+  background-color: #ba68c8;
 }
 
 .fileName {
-    margin-left: 10px;
-    font-size: 14px;
-    color: #2e2e2e;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #2e2e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .placeholderText {
-    margin-left: 10px;
-    font-size: 14px;
-    color: #858585;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #858585;
+}
+
+.preview-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.preview-image {
+  max-width: 150px;
+  border-radius: 20px;
+}
+
+.close-preview-button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.loadingText {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  color: #ba68c8;
+  font-weight: 500;
+  margin-top: -5px;
+  margin-left: 5px;
+  animation: pulse 1.5s infinite;
+  text-align: left;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .contact-link {
