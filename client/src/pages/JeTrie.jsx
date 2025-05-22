@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import '../assets/global.css';
 import TrashyFriends from '/trashyFriends.svg';
 
@@ -18,6 +18,7 @@ const JeTrie = () => {
   const [error, setError] = useState('');
   const [popupData, setPopupData] = useState(null);
   const [useFullPage, setUseFullPage] = useState(false);
+  const imageSearchRef = useRef();
 
   useEffect(() => {
     if (isAuthenticated === false) {
@@ -77,6 +78,9 @@ const JeTrie = () => {
     setPreviewUrl('');
     setPopupData(null);
     setError('');
+    if (imageSearchRef.current) {
+      imageSearchRef.current.reset();
+    }
   };
 
   return (
@@ -93,7 +97,7 @@ const JeTrie = () => {
             </p>
           </div>
 
-          <ImageSearch onSend={handleSend} />
+          <ImageSearch ref={imageSearchRef} onSend={handleSend} />
 
           {previewUrl && (
             <div className="preview-container">

@@ -1,11 +1,23 @@
 import { FiSearch } from "react-icons/fi";
 import { FaArrowRight } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useImperativeHandle, forwardRef, useRef } from "react";
 
-export default function ImageSearch({ onImageSelected, onSend }) {
+const ImageSearch = forwardRef(({ onImageSelected, onSend }, ref) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [file, setFile] = useState(null);
     const [fileName, setFileName] = useState("");
+    const inputRef = useRef();
+
+    useImperativeHandle(ref, () => ({
+        reset: () => {
+            setSelectedImage(null);
+            setFile(null);
+            setFileName("");
+            if (inputRef.current) {
+                inputRef.current.value = "";
+            }
+        }
+    }));
 
     const handleImageChange = (event) => {
         const selectedFile = event.target.files[0];
@@ -32,6 +44,7 @@ export default function ImageSearch({ onImageSelected, onSend }) {
                 <label className="fileInputLabel">
                     <FiSearch className="searchIcon" />
                     <input
+                        ref={inputRef}
                         type="file"
                         accept="image/*"
                         onChange={handleImageChange}
@@ -50,4 +63,5 @@ export default function ImageSearch({ onImageSelected, onSend }) {
             </div>
         </div>
     );
-}
+});
+export default ImageSearch;
