@@ -41,8 +41,6 @@ const ContactPage = () => {
     },
     title: {
       fontSize: isMobile ? '16px' : '20px',
-      fontWeight: 'bold',
-      color: '#333',
       fontFamily: "'Josefin Sans', sans-serif",
       marginTop: isMobile ? '0' : '10px',
     },
@@ -52,10 +50,10 @@ const ContactPage = () => {
     <div style={styles.page}>
       <img src={contactIllustration} alt="Contact" style={styles.image} />
       <div style={styles.content}>
-        <a href='https://github.com/yelineeee'><h1 style={styles.title}>Kelly Goncalves Gama - Développeuse react</h1></a>
-        <a href='https://github.com/arthurGuillemin'><h1 style={styles.title}>Arthur Guillemin - Développeur Back & IA</h1></a>
-        <a href='https://github.com/gladiaaa'><h1 style={styles.title}>Ryan Annic - Développeur Ia</h1></a>
-        <a href='https://github.com/emilie-caverne'><h1 style={styles.title}>Emilie Caverne - Développeuse react</h1></a>
+        <a href='https://github.com/yelineeee' className="contact-link"><h1 style={styles.title}>Kelly Goncalves Gama - Développeuse react</h1></a>
+        <a href='https://github.com/arthurGuillemin' className="contact-link"><h1 style={styles.title}>Arthur Guillemin - Développeur Back & IA</h1></a>
+        <a href='https://github.com/gladiaaa' className="contact-link"><h1 style={styles.title}>Ryan Annic - Développeur Ia</h1></a>
+        <a href='https://github.com/emilie-caverne' className="contact-link"><h1 style={styles.title}>Emilie Caverne - Développeuse react</h1></a>
       </div>
     </div>
   );

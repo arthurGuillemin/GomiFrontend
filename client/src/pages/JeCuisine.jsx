@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FoodieGirly from '../assets/foodieGirly.svg';
+import FoodieGirly from '/foodieGirly.svg';
 import { generateRecipesFromImage } from '../services/recipeGenerator';
 import '../assets/global.css';
 import { FiSearch } from 'react-icons/fi';
