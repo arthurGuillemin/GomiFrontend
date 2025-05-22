@@ -21,7 +21,7 @@ const JeTrie = () => {
   const imageSearchRef = useRef();
 
   useEffect(() => {
-    if (isAuthenticated === false) {
+    if (isAuthenticated != true) {
       navigate('/auth');
     }
   }, [isAuthenticated, navigate]);
