@@ -15,7 +15,7 @@ const App = () => {
   return (
     <AuthProvider>
     <Router>
-      <Header isAuthenticated={AuthProvider} />
+      <Header/>
       <Routes>
         <Route path="/auth" element={<Authentication />} />
         <Route path="/" element={<Home />} />
@@ -26,7 +26,6 @@ const App = () => {
         <Route path="/je-cuisine" element={<JeCuisine />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/test" element={<WasteClassifier/>} />
-
         <Route path="*" element={<Navigate to="/auth" />} />
       </Routes>
     </Router>
