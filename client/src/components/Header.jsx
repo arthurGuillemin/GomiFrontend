@@ -1,6 +1,7 @@
 import React, { useState, useEffect , useContext } from 'react';
 import { Menu } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const { isAuthenticated } = useContext(AuthContext); 
@@ -44,11 +45,11 @@ const Header = () => {
                         </div>
                     ) : (
                         <nav style={styles.nav}>
-                            <a href="/" style={styles.navLink}>Accueil</a>
-                            <a href="/je-trie" style={styles.navLink}>Poubelle</a>
-                            <a href="/je-cuisine" style={styles.navLink}>Frigo</a>
-                            <a href="/contact" style={styles.navLink}>Contact</a>
-                            <a href="/profil" style={styles.navLink}>Profile</a>
+                        <Link to="/" style={styles.navLink}>Accueil</Link>
+                        <Link to="/je-trie" style={styles.navLink}>Poubelle</Link>
+                        <Link to="/je-cuisine" style={styles.navLink}>Frigo</Link>
+                        <Link to="/contact" style={styles.navLink}>Contact</Link>
+                        <Link to="/profil" style={styles.navLink}>Profile</Link>
                         </nav>
                     )}
                 </>
@@ -61,11 +62,11 @@ const Header = () => {
                         onClick={() => setIsMenuOpen(false)}
                     />
                     <nav style={styles.navMobile}>
-                        <a href="/" style={styles.navLink}>Accueil</a>
-                        <a href="/je-trie" style={styles.navLink}>Poubelle</a>
-                        <a href="/je-cuisine" style={styles.navLink}>Frigo</a>
-                        <a href="/contact" style={styles.navLink}>Contact</a>
-                        <a href="/profil" style={styles.navLink}>Profile</a>
+                            <Link to="/" style={styles.navLink}>Accueil</Link>
+                            <Link to="/je-trie" style={styles.navLink}>Poubelle</Link>
+                            <Link to="/je-cuisine" style={styles.navLink}>Frigo</Link>
+                            <Link to="/contact" style={styles.navLink}>Contact</Link>
+                            <Link to="/profil" style={styles.navLink}>Profile</Link>
                     </nav>
                 </>
             )}
