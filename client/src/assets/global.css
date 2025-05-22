@@ -162,3 +162,13 @@ img {
     font-size: 14px;
     color: #858585;
 }
+
+.contact-link {
+  text-decoration: none;
+  color: #34C759;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #80ED99;
+}
