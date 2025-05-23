@@ -28,23 +28,52 @@ useEffect(() => {
 
 if (isloading) return null;
 
-  const materialToColor = (material) => {
-    switch (material) {
-      case 'papier/carton':
-      case 'papier':
-        return 'jaune';
-      case 'verre':
-        return 'verte';
-      case 'plastique':
-        return 'jaune';
-      case 'métal':
-        return 'jaune';
-      case 'ordures ménagères':
-        return 'grise';
-      default:
-        return 'grise';
-    }
-  };
+const translateMaterial = (mat) => {
+  switch (mat.toLowerCase()) {
+    case 'paper':
+    case 'papier':
+    case 'cardboard':
+    case 'papier/carton':
+      return 'papier / carton';
+    case 'glass':
+    case 'verre':
+      return 'verre';
+    case 'plastic':
+    case 'plastique':
+      return 'plastique';
+    case 'metal':
+    case 'métal':
+      return 'métal';
+    case 'organic':
+    case 'compost':
+    case 'bio':
+      return 'déchets organiques';
+    case 'trash':
+    case 'ordures ménagères':
+    case 'residual':
+      return 'ordures ménagères';
+    default:
+      return mat;
+  }
+};
+
+const materialToColor = (material) => {
+  switch (material) {
+    case 'papier / carton':
+    case 'papier':
+    case 'plastique':
+    case 'métal':
+      return 'jaune';
+    case 'verre':
+      return 'verte';
+    case 'déchets organiques':
+      return 'brune';
+    case 'ordures ménagères':
+      return 'grise';
+    default:
+      return 'grise';
+  }
+};
 
   const handleSend = async (file) => {
     setPreviewUrl(URL.createObjectURL(file));
@@ -52,12 +81,13 @@ if (isloading) return null;
     setError('');
     setPopupData(null);
 
-    try {
-      const data = await classifyWasteImage(file);
-      if (data.length > 0) {
-        const { objet, poubelle: material } = data[0];
-        const color = materialToColor(material);
-        setPopupData({ trashName: objet, color });
+  try {
+    const data = await classifyWasteImage(file);
+    if (data.length > 0) {
+      const { objet, poubelle: rawMaterial } = data[0];
+      const materialFr = translateMaterial(rawMaterial);
+      const color      = materialToColor(materialFr);
+      setPopupData({ trashName: materialFr,  color });
       } else {
         setError("Aucun résultat détecté.");
       }
