@@ -32,21 +32,21 @@ const Authentication = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-const handleSignup = async () => {
-    try {
-        const data = await signup({ username, email: signupEmail, password: signupPassword });
-        alert("Votre compte a bien été créé !");
-        setUsername('');
-        setSignupEmail('');
-        setSignupPassword('');
-        if (isMobile) {
-            setIsSignUpMobile(false);
+    const handleSignup = async () => {
+        try {
+            const data = await signup({ username, email: signupEmail, password: signupPassword });
+            alert("Votre compte a bien été créé !");
+            setUsername('');
+            setSignupEmail('');
+            setSignupPassword('');
+            if (isMobile) {
+                setIsSignUpMobile(false);
+            }
+        } catch (error) {
+            console.log(error.message);
+            alert("Une erreur est survenue lors de l'inscription.");
         }
-    } catch (error) {
-        console.log(error.message);
-        alert("Une erreur est survenue lors de l'inscription.");
-    }
-};
+    };
 
 
     const handleLogin = async () => {
@@ -63,7 +63,7 @@ const handleSignup = async () => {
 
 
     if (isAuthenticated) {
-        navigate('/'); 
+        navigate('/');
     }
 
     return (
@@ -77,7 +77,7 @@ const handleSignup = async () => {
                             <h2 style={styles.subtitle}>Créez-votre compte</h2>
                             <InputField label="Pseudo" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
                             <InputField label="Email" placeholder="example@domain.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
-                            <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
+                            <InputField label="Mot de passe" type="password" placeholder="••••••••" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                             <div style={styles.buttonWrapper}>
                                 <Button label="S'inscrire" onClick={handleSignup} />
                             </div>
@@ -90,7 +90,7 @@ const handleSignup = async () => {
                     <div style={{ ...styles.formContainer, ...styles.right }}>
                         <h2 style={styles.subtitle}>Connectez-vous</h2>
                         <InputField label="Email" placeholder="example@domain.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
-                        <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
+                        <InputField label="Mot de passe" type="password" placeholder="••••••••" isPassword value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
                         <div style={styles.buttonWrapper}>
                             <Button label="Se connecter" variant="outlined" onClick={handleLogin} />
                         </div>
@@ -131,9 +131,9 @@ const handleSignup = async () => {
                     src="/Together-cuate 1 (1).svg"
                     alt="Illustration"
                     style={{
-                        width: isMobile ? '250px' : '350px',
+                        width: isMobile ? '250px' : '300px',
                         backgroundColor: 'transparent',
-                        transform: isMobile ? 'none' : 'translateX(100px)',
+                        transform: isMobile ? 'none' : 'translateX(300px)',
                     }}
                 />
             </div>
@@ -196,7 +196,7 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '20px',
+        marginTop: '-10px',
         height: '100px',
     },
 };
