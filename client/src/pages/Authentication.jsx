@@ -35,9 +35,7 @@ const Authentication = () => {
 const handleSignup = async () => {
     try {
         const data = await signup({ username, email: signupEmail, password: signupPassword });
-
         alert("Votre compte a bien été créé !");
-
         setUsername('');
         setSignupEmail('');
         setSignupPassword('');
