@@ -10,7 +10,7 @@ import { classifyWasteImage } from '../services/gradioTrashService';
 import ImageSearch from '../components/imageSearch.jsx';
 
 const JeTrie = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+const { isAuthenticated, isloading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [previewUrl, setPreviewUrl] = useState('');
@@ -20,13 +20,13 @@ const JeTrie = () => {
   const [useFullPage, setUseFullPage] = useState(false);
   const imageSearchRef = useRef();
 
-  useEffect(() => {
-    if (isAuthenticated != true) {
-      navigate('/auth');
-    }
-  }, [isAuthenticated, navigate]);
+useEffect(() => {
+  if (!isloading && isAuthenticated === false) {
+    navigate('/auth');
+  }
+}, [isAuthenticated, isloading, navigate]);
 
-  if (isAuthenticated === undefined) return null;
+if (isloading) return null;
 
   const materialToColor = (material) => {
     switch (material) {

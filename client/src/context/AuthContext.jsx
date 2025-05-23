@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect } from 'react';
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [user, setUser] = useState(null);
+  const [isloading, setIsLoading] = useState(true); // 👈
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -12,7 +12,10 @@ const [isAuthenticated, setIsAuthenticated] = useState(null);
     if (token && userId) {
       setIsAuthenticated(true);
       setUser({ id: userId });
+    } else {
+      setIsAuthenticated(false);
     }
+    setIsLoading(false); // 👈 Important
   }, []);
 
   const login = ({ token, user_id }) => {
@@ -30,7 +33,7 @@ const [isAuthenticated, setIsAuthenticated] = useState(null);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, isloading }}>
       {children}
     </AuthContext.Provider>
   );
