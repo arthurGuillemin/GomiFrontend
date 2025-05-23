@@ -42,6 +42,8 @@ const Authentication = () => {
             if (isMobile) {
                 setIsSignUpMobile(false);
             }
+            alert("Votre compte a bien été créé !");
+
         } catch (error) {
             console.log(error.message);
             alert("Une erreur est survenue lors de l'inscription.");

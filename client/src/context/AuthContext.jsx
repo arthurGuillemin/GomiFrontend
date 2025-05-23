@@ -4,36 +4,40 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [user, setUser] = useState(null);
-  const [isloading, setIsLoading] = useState(true); // 👈
+  const [token, setToken] = useState(null); // 👈 AJOUT
+  const [isloading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('user_id');
-    if (token && userId) {
+    const storedToken = localStorage.getItem('token');
+    const storedUserId = localStorage.getItem('user_id');
+    if (storedToken && storedUserId) {
+      setToken(storedToken); 
+      setUser({ id: storedUserId });
       setIsAuthenticated(true);
-      setUser({ id: userId });
     } else {
       setIsAuthenticated(false);
     }
-    setIsLoading(false); // 👈 Important
+    setIsLoading(false);
   }, []);
 
   const login = ({ token, user_id }) => {
     localStorage.setItem('token', token);
     localStorage.setItem('user_id', user_id);
-    setIsAuthenticated(true);
+    setToken(token); // 👈 AJOUT
     setUser({ id: user_id });
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
-    setIsAuthenticated(false);
+    setToken(null); // 👈 AJOUT
     setUser(null);
+    setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, isloading }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, token, login, logout, isloading }}>
       {children}
     </AuthContext.Provider>
   );
