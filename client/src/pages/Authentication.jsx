@@ -32,14 +32,24 @@ const Authentication = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleSignup = async () => {
-        try {
-            const data = await signup({ username, email: signupEmail, password: signupPassword });
-        } catch (error) {
-            console.log
-                (error.message);
+const handleSignup = async () => {
+    try {
+        const data = await signup({ username, email: signupEmail, password: signupPassword });
+
+        alert("Votre compte a bien été créé !");
+
+        setUsername('');
+        setSignupEmail('');
+        setSignupPassword('');
+        if (isMobile) {
+            setIsSignUpMobile(false);
         }
-    };
+    } catch (error) {
+        console.log(error.message);
+        alert("Une erreur est survenue lors de l'inscription.");
+    }
+};
+
 
     const handleLogin = async () => {
         if (!loginEmail || !loginPassword) {
