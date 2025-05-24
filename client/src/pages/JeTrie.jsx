@@ -60,23 +60,25 @@ const translateMaterial = (mat) => {
 const materialToColor = (material) => {
   switch (material) {
     case 'papier / carton':
-    case 'papier':
     case 'plastique':
     case 'métal':
       return 'jaune';
     case 'verre':
-      return 'verte';
+      return 'verte'; 
     case 'déchets organiques':
-      return 'brune';
+      return 'marron'; 
     case 'ordures ménagères':
-      return 'grise';
+      return 'grise'; 
     default:
       return 'grise';
   }
 };
 
+const  displayPreview =(file) =>{
+      setPreviewUrl(URL.createObjectURL(file));
+};
+
   const handleSend = async (file) => {
-    setPreviewUrl(URL.createObjectURL(file));
     setLoading(true);
     setError('');
     setPopupData(null);
@@ -127,7 +129,7 @@ const materialToColor = (material) => {
             </p>
           </div>
 
-          <ImageSearch ref={imageSearchRef} onSend={handleSend} />
+          <ImageSearch ref={imageSearchRef} onSend={handleSend} onImageSelected={displayPreview} />
 
           {previewUrl && (
             <div className="preview-container">
