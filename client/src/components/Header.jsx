@@ -25,9 +25,7 @@ const Header = () => {
     }
   };
 useEffect(() => {
-  console.log('[Header] useEffect triggered');
-  console.log('user:', user);
-  console.log('token:', token);
+
   if (user?.id && token) {
     getUsername(user.id, token);
   }
