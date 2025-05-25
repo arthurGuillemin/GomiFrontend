@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/auth';
+const API_URL = 'https://gomibackend.onrender.com/auth';
 
 export const signup = async ({ username, email, password }) => {
   try {
