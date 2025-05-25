@@ -230,3 +230,73 @@ img {
 .contact-link:hover {
   color: #80ED99;
 }
+
+
+@media (max-width: 768px) {
+  article {
+    flex-direction: column;
+    padding: 10% 5%;
+    text-align: center;
+  }
+
+  section {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .mainHome button,
+  .startBtn,
+  button {
+    padding: 10px 40px;
+    font-size: 14px;
+  }
+
+  img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .jeCuisineHome img {
+    max-width: 80%;
+  }
+
+  .inputWrapper {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .fileName,
+  .placeholderText {
+    font-size: 12px;
+    max-width: 100%;
+  }
+
+  .preview-image {
+    max-width: 100px;
+  }
+
+  .close-preview-button {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .loadingText {
+    font-size: 14px;
+  }
+}

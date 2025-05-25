@@ -197,7 +197,7 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '-10px',
+        marginTop: '10px',
         height: '100px',
     },
 };
