@@ -19,7 +19,6 @@ const Header = () => {
   const getUsername = async (id, token) => {
     try {
       const data = await getUserNameById(id, token);
-      console.log(data);
       setUsername(data.username);
     } catch (error) {
       console.log(error.message);
