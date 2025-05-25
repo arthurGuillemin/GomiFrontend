@@ -63,7 +63,6 @@ const Authentication = () => {
         }
     };
 
-
     if (isAuthenticated) {
         navigate('/');
     }
@@ -130,7 +129,7 @@ const Authentication = () => {
 
             <div style={styles.authIllustration}>
                 <img
-                    src="/Together-cuate 1 (1).svg"
+                    src="/Together-cuate.svg"
                     alt="Illustration"
                     style={{
                         width: isMobile ? '250px' : '300px',

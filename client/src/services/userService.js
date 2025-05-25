@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/users';
+const API_URL = 'https://gomibackend.onrender.com/users';
 
 export const getUserNameById = async (userId, token) => {
   try {
