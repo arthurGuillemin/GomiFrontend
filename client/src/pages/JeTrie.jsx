@@ -2,16 +2,13 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 import '../assets/global.css';
 import TrashyFriends from '/trashyFriends.svg';
 
-import { AuthContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+
 import TrashPopup from '../components/TrashResult/TrashPopup.jsx';
 import TrashFullPage from '../components/TrashResult/TrashFullPage.jsx';
 import { classifyWasteImage } from '../services/gradioTrashService';
 import ImageSearch from '../components/imageSearch.jsx';
 
 const JeTrie = () => {
-const { isAuthenticated, isloading } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const [previewUrl, setPreviewUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,13 +17,7 @@ const { isAuthenticated, isloading } = useContext(AuthContext);
   const [useFullPage, setUseFullPage] = useState(false);
   const imageSearchRef = useRef();
 
-useEffect(() => {
-  if (!isloading && isAuthenticated === false) {
-    navigate('/auth');
-  }
-}, [isAuthenticated, isloading, navigate]);
 
-if (isloading) return null;
 
 const translateMaterial = (mat) => {
   switch (mat.toLowerCase()) {

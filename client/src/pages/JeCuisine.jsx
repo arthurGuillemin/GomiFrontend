@@ -9,22 +9,13 @@ import ImageSearch from '../components/imageSearch.jsx';
 import { generateRecipesFromImage } from '../services/recipeGenerator';
 
 const JeCuisine = () => {
-const { isAuthenticated, isloading } = useContext(AuthContext);
-  const navigate = useNavigate();
-
   const imageSearchRef = useRef();
   const [previewUrl, setPreviewUrl] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [recette, setRecette] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  useEffect(() => {
-    if (!isloading && isAuthenticated === false) {
-      navigate('/auth');
-    }
-  }, [isAuthenticated, isloading, navigate]);
 
-if (isloading) return null;
 
   const handleSend = async (file) => {
     setPreviewUrl(URL.createObjectURL(file));

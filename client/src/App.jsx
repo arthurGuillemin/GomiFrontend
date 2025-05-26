@@ -10,7 +10,7 @@ import JeCuisine from './pages/JeCuisine';
 import { AuthProvider } from './context/AuthContext'
 import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
-import WasteClassifier from './pages/test';
+import PrivateRoute from './components/PrivateRoute';
 const App = () => {
   return (
     <AuthProvider>
@@ -19,13 +19,12 @@ const App = () => {
       <Routes>
         <Route path="/auth" element={<Authentication />} />
         <Route path="/" element={<Home />} />
-        <Route path="/trash" element={<TrashResultPage />} />
-        <Route path="/recipe" element={<RecipePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/je-trie" element={<JeTrie />} /> 
-        <Route path="/je-cuisine" element={<JeCuisine />} />
-        <Route path="/profil" element={<ProfilePage />} />
-        <Route path="/test" element={<WasteClassifier/>} />
+        <Route path="/trash" element={ <PrivateRoute> < TrashResultPage/> </PrivateRoute>} />
+        <Route path="/recipe" element={ <PrivateRoute> <RecipePage/> </PrivateRoute>} />
+        <Route path="/contact" element={ <PrivateRoute> <ContactPage/> </PrivateRoute>} />
+        <Route path="/je-trie" element={ <PrivateRoute> < JeTrie/> </PrivateRoute>} />
+        <Route path="/je-cuisine" element={ <PrivateRoute> < JeCuisine/> </PrivateRoute>} />
+        <Route path="/profil" element={ <PrivateRoute> < ProfilePage/> </PrivateRoute>} />
         <Route path="*" element={<Navigate to="/auth" />} />
       </Routes>
     </Router>
