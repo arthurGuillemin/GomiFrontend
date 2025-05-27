@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const login = ({ token, user_id }) => {
     localStorage.setItem('token', token);
     localStorage.setItem('user_id', user_id);
-    setToken(token); // 👈 AJOUT
+    setToken(token);
     setUser({ id: user_id });
     setIsAuthenticated(true);
   };
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
-    setToken(null); // 👈 AJOUT
+    setToken(null); 
     setUser(null);
     setIsAuthenticated(false);
   };

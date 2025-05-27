@@ -4,6 +4,7 @@ import Button from '../components/Auth/Button';
 import { signup, login as loginService } from '../services/authService';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { validateSignupInput } from '../utils/dataValidation';
 
 const Authentication = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -33,6 +34,14 @@ const Authentication = () => {
     }, []);
 
     const handleSignup = async () => {
+        const validation = validateSignupInput({
+            email: signupEmail,
+            password: signupPassword,
+        });
+        if (!validation.isValid) {
+            alert(validation.message);
+            return;
+        }
         try {
             const data = await signup({ username, email: signupEmail, password: signupPassword });
             alert("Votre compte a bien été créé !");
@@ -42,7 +51,6 @@ const Authentication = () => {
             if (isMobile) {
                 setIsSignUpMobile(false);
             }
-            alert("Votre compte a bien été créé !");
 
         } catch (error) {
             console.log(error.message);
