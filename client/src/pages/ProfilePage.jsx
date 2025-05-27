@@ -4,12 +4,13 @@ import InputField from '../components/Auth/InputField';
 import Button from '../components/Auth/Button';
 import profileIllustration from '/profile.svg';
 import { AuthContext } from '../context/AuthContext';
+import { updateUserdata } from '../services/userService'; // adapte le chemin si besoin
 
 const ProfilePage = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    const { logout } = useContext(AuthContext);
+    const { logout, user, token } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,6 +26,19 @@ const ProfilePage = () => {
         logout();
         navigate('/auth');
     };
+
+    const handleSave = async () => {
+    try {
+        const updatedUser = await updateUserdata(user.id, token, {
+            username,
+            email
+        });
+        alert('Profil mis à jour avec succès !');
+        console.log(updatedUser);
+    } catch (error) {
+        alert("Erreur lors de la mise à jour du profil");
+        console.error(error);
+    }};
 
     const styles = {
         page: {
@@ -67,7 +81,7 @@ const ProfilePage = () => {
                 <InputField label="Pseudo" placeholder="Votre pseudo" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <InputField label="Email" placeholder="Votre email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <div style={styles.buttonWrapper}>
-                    <Button label="Sauvegarder" />
+                    <Button label="Sauvegarder" onClick={handleSave}/>
                     <Button
                         label="Déconnexion"
                         variant="outlined"

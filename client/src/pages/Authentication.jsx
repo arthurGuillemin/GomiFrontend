@@ -12,6 +12,7 @@ const Authentication = () => {
 
     const [signupEmail, setSignupEmail] = useState('');
     const [signupPassword, setSignupPassword] = useState('');
+    const [confirmSingupPassword , setConfirmSignupPassword] = useState('');
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -34,6 +35,10 @@ const Authentication = () => {
     }, []);
 
     const handleSignup = async () => {
+        if (signupPassword != confirmSingupPassword) {
+            alert('Le mot de passe et la confimation ne sont pas identiques');
+            return;
+        }
         const validation = validateSignupInput({
             email: signupEmail,
             password: signupPassword,
@@ -87,6 +92,7 @@ const Authentication = () => {
                             <InputField label="Pseudo" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
                             <InputField label="Email" placeholder="example@domain.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
                             <InputField label="Mot de passe" type="password" placeholder="••••••••" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
+                            <InputField label="Confirmation du mot de passe" type="password" placeholder="••••••••" isPassword value={confirmSingupPassword} onChange={(e) => setConfirmSignupPassword(e.target.value)} />
                             <div style={styles.buttonWrapper}>
                                 <Button label="S'inscrire" onClick={handleSignup} />
                             </div>
