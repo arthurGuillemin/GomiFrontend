@@ -69,8 +69,8 @@ const Authentication = () => {
             alert('Email et mot de passe requis pour ce connecter')
         }
         try {
-            const data = await loginService({ email: loginEmail, password: loginPassword });
-            login({ token: data.token, user_id: data.user_id });
+            const data = await loginService({ email: loginEmail, password: loginPassword });            
+            login({ token: data.token, user_id: data.user_id , email: data.email , username: data.username });
         } catch (error) {
             console.log(error.message);
         }

@@ -4,7 +4,7 @@ import InputField from '../components/Auth/InputField';
 import Button from '../components/Auth/Button';
 import profileIllustration from '/profile.svg';
 import { AuthContext } from '../context/AuthContext';
-import { updateUserdata } from '../services/userService'; // adapte le chemin si besoin
+import { updateUserdata } from '../services/userService';
 
 const ProfilePage = () => {
     const [username, setUsername] = useState('');
@@ -12,11 +12,10 @@ const ProfilePage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const { logout, user, token } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    console.log(user);
     useEffect(() => {
         const mediaQuery = window.matchMedia('(max-width: 768px)');
         const handleMediaChange = (e) => setIsMobile(e.matches);
-
         handleMediaChange(mediaQuery);
         mediaQuery.addEventListener('change', handleMediaChange);
         return () => mediaQuery.removeEventListener('change', handleMediaChange);
@@ -78,8 +77,8 @@ const ProfilePage = () => {
             <img src={profileIllustration} alt="Illustration profil" style={styles.image} />
             <div style={styles.formContainer}>
                 <h1 style={styles.title}>Profil</h1>
-                <InputField label="Pseudo" placeholder="Votre pseudo" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <InputField label="Email" placeholder="Votre email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <InputField label="Pseudo" placeholder={user?.username || 'Votre pseudo'} value={username} onChange={(e) => setUsername(e.target.value)} />
+                <InputField label="Email" placeholder={user?.email || 'Votre email'} value={email} onChange={(e) => setEmail(e.target.value)} />
                 <div style={styles.buttonWrapper}>
                     <Button label="Sauvegarder" onClick={handleSave}/>
                     <Button

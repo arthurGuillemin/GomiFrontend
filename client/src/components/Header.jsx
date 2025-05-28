@@ -2,34 +2,18 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Menu, User } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import { Link, useLocation } from 'react-router-dom';
-import { getUserNameById } from '../services/userService';
+
 const Header = () => {
   const { isAuthenticated, user , token } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [hoveredLink, setHoveredLink] = useState(null);
-  const [username, setUsername] = useState('');
   const location = useLocation();
   
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
-
-  const getUsername = async (id, token) => {
-    try {
-      const data = await getUserNameById(id, token);
-      setUsername(data.username);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-useEffect(() => {
-
-  if (user?.id && token) {
-    getUsername(user.id, token);
-  }
-}, [user, token]);
 
 
 
@@ -109,7 +93,7 @@ useEffect(() => {
           </div>
         </a>
         {isAuthenticated && (
-          <span style={styles.welcomeText}>Bienvenue, {username}</span>
+          <span style={styles.welcomeText}>Bienvenue, {user.username}</span>
         )}
       </div>
 
