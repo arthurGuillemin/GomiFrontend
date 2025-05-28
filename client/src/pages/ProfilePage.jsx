@@ -12,7 +12,6 @@ const ProfilePage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const { logout, user, token } = useContext(AuthContext);
     const navigate = useNavigate();
-    console.log(user);
     useEffect(() => {
         const mediaQuery = window.matchMedia('(max-width: 768px)');
         const handleMediaChange = (e) => setIsMobile(e.matches);
