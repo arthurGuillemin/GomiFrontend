@@ -49,21 +49,25 @@ const translateMaterial = (mat) => {
 };
 
 const materialToColor = (material) => {
-  switch (material) {
-    case 'papier / carton':
+  switch (material.toLowerCase()) {
+    case 'papier':
+    case 'carton':
+    case 'papier/carton':
     case 'plastique':
     case 'métal':
       return 'jaune';
     case 'verre':
-      return 'verte'; 
+      return 'verte';
     case 'déchets organiques':
-      return 'marron'; 
+      return 'marron';
     case 'ordures ménagères':
-      return 'grise'; 
+    case 'trash':
+      return 'grise';
     default:
       return 'grise';
   }
 };
+
 
 const  displayPreview =(file) =>{
       setPreviewUrl(URL.createObjectURL(file));

@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { validateSignupInput } from '../utils/dataValidation';
 
 const Authentication = () => {
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isSignUpMobile, setIsSignUpMobile] = useState(false);
 
@@ -35,44 +38,52 @@ const Authentication = () => {
     }, []);
 
     const handleSignup = async () => {
-        if (signupPassword != confirmSingupPassword) {
-            alert('Le mot de passe et la confimation ne sont pas identiques');
+        setErrorMessage('');
+        setSuccessMessage('');
+        if (signupPassword !== confirmSingupPassword) {
+            setErrorMessage('Le mot de passe et la confirmation ne sont pas identiques.');
             return;
         }
+
         const validation = validateSignupInput({
             email: signupEmail,
             password: signupPassword,
         });
+
         if (!validation.isValid) {
-            alert(validation.message);
+            setErrorMessage(validation.message);
             return;
         }
+
         try {
-            const data = await signup({ username, email: signupEmail, password: signupPassword });
-            alert("Votre compte a bien été créé !");
+            await signup({ username, email: signupEmail, password: signupPassword });
+            setSuccessMessage("Votre compte a bien été créé !");
             setUsername('');
             setSignupEmail('');
             setSignupPassword('');
-            if (isMobile) {
-                setIsSignUpMobile(false);
-            }
-
+            setConfirmSignupPassword('');
+            if (isMobile) setIsSignUpMobile(false);
         } catch (error) {
-            console.log(error.message);
-            alert("Une erreur est survenue lors de l'inscription.");
+            console.error(error.message);
+            setErrorMessage("Une erreur est survenue lors de l'inscription.");
         }
     };
 
-
     const handleLogin = async () => {
+        setErrorMessage('');
+        setSuccessMessage('');
+
         if (!loginEmail || !loginPassword) {
-            alert('Email et mot de passe requis pour ce connecter')
+            setErrorMessage('Email et mot de passe requis pour se connecter.');
+            return;
         }
+
         try {
-            const data = await loginService({ email: loginEmail, password: loginPassword });            
-            login({ token: data.token, user_id: data.user_id , email: data.email , username: data.username });
+            const data = await loginService({ email: loginEmail, password: loginPassword });
+            login({ token: data.token, user_id: data.user_id, email: data.email, username: data.username });
         } catch (error) {
-            console.log(error.message);
+            console.error(error.message);
+            setErrorMessage("Identifiants incorrects ou utilisateur non trouvé.");
         }
     };
 
@@ -88,11 +99,13 @@ const Authentication = () => {
                 {!isMobile && (
                     <>
                         <div style={{ ...styles.formContainer, ...styles.left }}>
-                            <h2 style={styles.subtitle}>Créez-votre compte</h2>
+                            <h2 style={styles.subtitle}>Créez votre compte</h2>
                             <InputField label="Pseudo" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
                             <InputField label="Email" placeholder="example@domain.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
-                            <InputField label="Mot de passe" type="password" placeholder="••••••••" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
-                            <InputField label="Confirmation du mot de passe" type="password" placeholder="••••••••" isPassword value={confirmSingupPassword} onChange={(e) => setConfirmSignupPassword(e.target.value)} />
+                            <InputField label="Mot de passe" type="password" isPassword placeholder="••••••••" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
+                            <InputField label="Confirmation du mot de passe" type="password" isPassword placeholder="••••••••" value={confirmSingupPassword} onChange={(e) => setConfirmSignupPassword(e.target.value)} />
+                            {errorMessage && <p style={styles.errorText}>{errorMessage}</p>}
+                            {successMessage && <p style={styles.successText}>{successMessage}</p>}
                             <div style={styles.buttonWrapper}>
                                 <Button label="S'inscrire" onClick={handleSignup} />
                             </div>
@@ -105,7 +118,8 @@ const Authentication = () => {
                     <div style={{ ...styles.formContainer, ...styles.right }}>
                         <h2 style={styles.subtitle}>Connectez-vous</h2>
                         <InputField label="Email" placeholder="example@domain.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
-                        <InputField label="Mot de passe" type="password" placeholder="••••••••" isPassword value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
+                        <InputField label="Mot de passe" type="password" isPassword placeholder="••••••••" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
+                        {errorMessage && <p style={styles.errorText}>{errorMessage}</p>}
                         <div style={styles.buttonWrapper}>
                             <Button label="Se connecter" variant="outlined" onClick={handleLogin} />
                         </div>
@@ -123,10 +137,13 @@ const Authentication = () => {
 
                 {isMobile && isSignUpMobile && (
                     <div style={{ ...styles.formContainer, ...styles.left }}>
-                        <h2 style={styles.subtitle}>Créez-votre compte</h2>
+                        <h2 style={styles.subtitle}>Créez votre compte</h2>
                         <InputField label="Pseudo" placeholder="ArthurLaTutur" value={username} onChange={(e) => setUsername(e.target.value)} />
                         <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
-                        <InputField label="Mot de passe" type="password" placeholder="********" isPassword value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
+                        <InputField label="Mot de passe" type="password" isPassword placeholder="********" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
+                        <InputField label="Confirmation du mot de passe" type="password" isPassword placeholder="********" value={confirmSingupPassword} onChange={(e) => setConfirmSignupPassword(e.target.value)} />
+                        {errorMessage && <p style={styles.errorText}>{errorMessage}</p>}
+                        {successMessage && <p style={styles.successText}>{successMessage}</p>}
                         <div style={styles.buttonWrapper}>
                             <Button label="S'inscrire" onClick={handleSignup} />
                         </div>
@@ -213,6 +230,16 @@ const styles = {
         alignItems: 'center',
         marginTop: '10px',
         height: '100px',
+    },
+    errorText: {
+        color: 'red',
+        marginTop: '10px',
+        fontSize: '0.9rem',
+    },
+    successText: {
+        color: 'green',
+        marginTop: '10px',
+        fontSize: '0.9rem',
     },
 };
 
