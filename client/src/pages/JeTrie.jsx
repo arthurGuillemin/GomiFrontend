@@ -54,7 +54,7 @@ const materialToColor = (material) => {
       return 'jaune';
     case 'carton':
       return 'jaune';
-    case 'papier/carton':
+    case 'papier / carton':
       return 'jaune';
     case 'plastique':
       return 'jaune';
