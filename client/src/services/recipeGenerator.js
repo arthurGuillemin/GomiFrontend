@@ -1,25 +1,15 @@
-import axios from 'axios';
+import { Client } from "@gradio/client";
 
-export async function generateRecipesFromImage(imageFile) {
-  const formData = new FormData();
-  formData.append("image", imageFile);
+const clientPromise = Client.connect("ankz22/Fridge_recipe_app");
 
-  try {
-    const response = await axios.post("http://localhost:5050/recette", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-
-    const { ingredients, recette } = response.data;
-
-
-    return {
-      ingredients,
-      recette: typeof recette === "string" ? recette.trim() : recette
-    };
-  } catch (error) {
-    console.error("Erreur axios :", error.response?.data || error.message);
-    throw new Error("Erreur pendant la génération de la recette.");
-  }
+export async function generateRecipeFromImage(imageFile) {
+  const client = await clientPromise;
+  const response = await client.predict("/predict", {
+    image: imageFile,
+  });
+  const recipe = response.data[0];
+  
+  return {
+    recipe,
+  };
 }

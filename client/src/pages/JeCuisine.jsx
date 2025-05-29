@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { AuthContext } from '../context/AuthContext';
 import ImageSearch from '../components/imageSearch.jsx';
-import { generateRecipesFromImage } from '../services/recipeGenerator';
+import { generateRecipeFromImage } from '../services/recipeGenerator';
 
 const JeCuisine = () => {
   const imageSearchRef = useRef();
@@ -17,32 +17,36 @@ const JeCuisine = () => {
   const [error, setError] = useState('');
 
 
-  const handleSend = async (file) => {
-    setPreviewUrl(URL.createObjectURL(file));
-    setIngredients([]);
-    setRecette('');
-    setError('');
-    setLoading(true);
+const handleSend = async (file) => {
+  setPreviewUrl(URL.createObjectURL(file));  
+  setIngredients([]);
+  setRecette('');
+  setError('');
+  setLoading(true);
 
-    try {
-      const result = await generateRecipesFromImage(file);
-      const cleaned = Array.isArray(result.ingredients)
-        ? result.ingredients.map(i => i.trim())
-        : String(result.ingredients)
-            .replace(/[\[\]']+/g, '')
-            .split(',')
-            .map(i => i.trim())
-            .filter(Boolean);
-
-      setIngredients(cleaned);
-      setRecette(result.recette);
-    } catch (err) {
-      console.error(err);
-      setError('Erreur lors de la génération de la recette.');
-    } finally {
-      setLoading(false);
+  try {
+    const result = await generateRecipeFromImage(file);
+    let cleanedIngredients = [];
+    if (Array.isArray(result.ingredients)) {
+      cleanedIngredients = result.ingredients.map(i => i.trim());
+    } else if (typeof result.ingredients === 'string') {
+      cleanedIngredients = result.ingredients
+        .replace(/[\[\]'"']+/g, '')   
+        .split(',')
+        .map(i => i.trim())
+        .filter(Boolean);
     }
-  };
+
+    setIngredients(cleanedIngredients);
+    setRecette(result.recipe || result.recette || 'Recette non disponible.');
+  } catch (err) {
+    console.error(err);
+    setError('Erreur lors de la gen de la recette.');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const resetPreview = () => {
     setPreviewUrl('');
@@ -62,6 +66,7 @@ const JeCuisine = () => {
               Prenez une photo de l’intérieur de votre frigo et découvrez automatiquement les ingrédients détectés. Une façon simple et rapide de garder un œil sur ce que vous avez, éviter le gaspillage et trouver des idées de recettes adaptées à ce que vous avez sous la main !
             </p>
           </div>
+
 
           <ImageSearch ref={imageSearchRef} onSend={handleSend} />
           {previewUrl && (
