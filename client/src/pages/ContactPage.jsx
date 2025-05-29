@@ -47,7 +47,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div style={styles.page}>
+    <div  className="fade-in-up" style={styles.page}>
       <img src={contactIllustration} alt="Contact" style={styles.image} />
       <div style={styles.content}>
         <a href='https://github.com/yelineeee' className="contact-link"><h1 style={styles.title}>Kelly Goncalves Gama - Développeuse react</h1></a>

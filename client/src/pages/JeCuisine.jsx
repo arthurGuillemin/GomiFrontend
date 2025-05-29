@@ -54,7 +54,7 @@ const JeCuisine = () => {
 
   return (
     <div>
-      <article className="jeCuisineHome">
+      <article className="jeCuisineHome fade-in-up">
         <section>
           <div>
             <h1>Je cuisine</h1>

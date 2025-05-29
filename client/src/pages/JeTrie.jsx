@@ -118,7 +118,7 @@ const  displayPreview =(file) =>{
     <div>
       <article className="jeTrieHome">
         <section>
-          <div>
+          <div className=' fade-in-up'>
             <h1 className='title-page'>Je trie</h1>
             <p>
               Prenez une photo de votre déchet pour savoir instantanément dans quelle
@@ -128,7 +128,7 @@ const  displayPreview =(file) =>{
             </p>
           </div>
 
-          <ImageSearch ref={imageSearchRef} onSend={handleSend} onImageSelected={displayPreview} />
+          <ImageSearch  ref={imageSearchRef} onSend={handleSend} onImageSelected={displayPreview} />
 
           {previewUrl && (
             <div className="preview-container">
@@ -144,7 +144,7 @@ const  displayPreview =(file) =>{
           {loading && <p className="loadingText">Analyse en cours...</p>}
           {error && <p className="errorText">{error}</p>}
         </section>
-        <section>
+        <section className=' fade-in-up'>
           <img src={TrashyFriends}  />
         </section>
       </article>

@@ -39,7 +39,7 @@ const ImageSearch = forwardRef(({ onImageSelected, onSend }, ref) => {
     };
 
     return (
-        <div className="searchContainer">
+        <div className="searchContainer fade-in-up">
             <div className="inputWrapper">
                 <label className="fileInputLabel">
                     <FiSearch className="searchIcon" />

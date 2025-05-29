@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div>
-      <article className='mainHome'>
+      <article className='mainHome fade-in-up'>
         <>
           <section>
             <h1>Trier. Reduire.</h1>

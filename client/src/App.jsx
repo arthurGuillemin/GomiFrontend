@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/trash" element={ <PrivateRoute> < TrashResultPage/> </PrivateRoute>} />
         <Route path="/recipe" element={ <PrivateRoute> <RecipePage/> </PrivateRoute>} />
         <Route path="/contact" element={ <PrivateRoute> <ContactPage/> </PrivateRoute>} />
-        <Route path="/je-trie" element={ <PrivateRoute> < JeTrie/> </PrivateRoute>} />
+        <Route path="/je-trie" element={ <PrivateRoute> <JeTrie/> </PrivateRoute>} />
         <Route path="/je-cuisine" element={ <PrivateRoute> < JeCuisine/> </PrivateRoute>} />
         <Route path="/profil" element={ <PrivateRoute> < ProfilePage/> </PrivateRoute>} />
         <Route path="*" element={<Navigate to="/auth" />} />

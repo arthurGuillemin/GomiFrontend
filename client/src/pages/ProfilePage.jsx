@@ -78,7 +78,7 @@ const handleSave = async () => {
     };
 
     return (
-        <div style={styles.page}>
+        <div className='fade-in-up' style={styles.page}>
             <img src={profileIllustration} alt="Illustration profil" style={styles.image} />
             <div style={styles.formContainer}>
                 <h1 style={styles.title}>Profil</h1>
