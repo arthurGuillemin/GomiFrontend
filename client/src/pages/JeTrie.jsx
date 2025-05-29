@@ -115,7 +115,7 @@ const  displayPreview =(file) =>{
       <article className="jeTrieHome">
         <section>
           <div>
-            <h1>Je trie</h1>
+            <h1 className='title-page'>Je trie</h1>
             <p>
               Prenez une photo de votre déchet pour savoir instantanément dans quelle
               poubelle il doit aller. Verre, plastique, compost ou ordures : l’appli vous

@@ -51,6 +51,7 @@ p {
   line-height: 1.5;
   max-width: 600px;
   margin: 30px 0;
+  text-align: center;
 }
 
 .mainHome p {
@@ -241,6 +242,10 @@ img {
     font-size: 36px;
   }
 
+  .title-page{
+    padding-top: 5rem; /* Emy ou Kelly : Rustine pour l'instant (le titre <h1>je trie <h1/> sur le page Jetrie.jsx ne s'affiche pas de la mm maniere que sur Je-cuisine*/
+  }
+
   h2 {
     font-size: 28px;
   }
@@ -250,12 +255,6 @@ img {
     max-width: 100%;
   }
 
-  .mainHome button,
-  .startBtn,
-  button {
-    padding: 10px 40px;
-    font-size: 14px;
-  }
 
   img {
     max-width: 90%;
@@ -274,27 +273,13 @@ img {
     max-width: 100%;
   }
 
-  .preview-image {
-    max-width: 100px;
-  }
 
-  .close-preview-button {
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    line-height: 18px;
-  }
+
 
   .loadingText {
     font-size: 14px;
   }
-.inputWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: stretch;
-  height: inherit;
-}
+
 
 .fileInputLabel {
   height: 48px;
@@ -307,8 +292,8 @@ img {
 }
 
 .sendButton {
-  height: 48px;
-  width: 100%;
+  height: 100%;
+  width: 20%;
   font-size: 18px;
   display: flex;
   justify-content: center;
@@ -319,3 +304,5 @@ img {
 }
 
 }
+
+
