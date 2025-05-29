@@ -138,8 +138,8 @@ const Authentication = () => {
                 {isMobile && isSignUpMobile && (
                     <div style={{ ...styles.formContainer, ...styles.left }}>
                         <h2 style={styles.subtitle}>Créez votre compte</h2>
-                        <InputField label="Pseudo" placeholder="ArthurLaTutur" value={username} onChange={(e) => setUsername(e.target.value)} />
-                        <InputField label="Email" placeholder="ArthurLaTutur@gmail.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
+                        <InputField label="Pseudo" placeholder="Pseudo" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <InputField label="Email" placeholder="Votre email" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
                         <InputField label="Mot de passe" type="password" isPassword placeholder="********" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                         <InputField label="Confirmation du mot de passe" type="password" isPassword placeholder="********" value={confirmSingupPassword} onChange={(e) => setConfirmSignupPassword(e.target.value)} />
                         {errorMessage && <p style={styles.errorText}>{errorMessage}</p>}
