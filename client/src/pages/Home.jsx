@@ -35,7 +35,7 @@ const Home = () => {
             <a href='/auth'><button className="startBtn">Commencer</button></a>
           ) : (
             <Link to="/je-trie">
-              <button>Essayer →</button>
+              <button className="startBtn">Essayer</button>
             </Link>
           )}
         </section>
@@ -51,7 +51,7 @@ const Home = () => {
             <a href='/auth'><button className="startBtn">Commencer</button></a>
           ) : (
             <Link to="/je-cuisine">
-              <button>Essayer →</button>
+              <button className="startBtn">Essayer</button>
             </Link>
           )}
         </section>

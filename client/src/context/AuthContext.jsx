@@ -44,8 +44,23 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
+  const update = (data) => {
+    if (data.email) {
+      localStorage.setItem('email', data.email);
+    }
+    if (data.username) {
+      localStorage.setItem('username', data.username);
+    }
+
+    setUser((prev) => ({
+      ...prev,
+      ...data,
+    }));
+  };
+
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, token, login, logout, isloading }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, token, login, logout, update, isloading }}>
       {children}
     </AuthContext.Provider>
   );

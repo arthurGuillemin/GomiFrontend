@@ -10,7 +10,7 @@ const ProfilePage = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    const { logout, user, token } = useContext(AuthContext);
+    const { logout, update, user, token } = useContext(AuthContext);
     const navigate = useNavigate();
     useEffect(() => {
         const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -25,18 +25,24 @@ const ProfilePage = () => {
         navigate('/auth');
     };
 
-    const handleSave = async () => {
+const handleSave = async () => {
     try {
-        const updatedUser = await updateUserdata(user.id, token, {
+        const updatePayload = {
             username,
-            email
-        });
-        alert('Profil mis à jour avec succès !');
+            ...(email.trim() !== '' && { email })
+        };
+
+        const updatedUser = await updateUserdata(user.id, token, updatePayload);
+        update(updatePayload)
+        alert('Profil mis a jour');
+        
         console.log(updatedUser);
     } catch (error) {
-        alert("Erreur lors de la mise à jour du profil");
+        alert("Erreur lors de la mise a jour du profil");
         console.error(error);
-    }};
+    }
+};
+
 
     const styles = {
         page: {

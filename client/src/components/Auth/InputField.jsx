@@ -17,13 +17,18 @@ const InputField = ({ label, placeholder, type = "text", isPassword = false  , v
         <div style={styles.container}>
             <label style={isMobile ? styles.labelSmall : styles.label}>{label}</label>
             <div style={styles.inputWrapper}>
+                <form>
+                    
                 <input
                     type={isPassword ? (visible ? "text" : "password") : type}
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
                     style={isMobile ? styles.inputSmall : styles.input}
+                    autoComplete="password"
                 />
+                </form>
+
                 {isPassword && (
                     <span onClick={() => setVisible(!visible)} style={styles.eyeIcon}>
                         {visible ? <EyeOff size={20} /> : <Eye size={20} />}

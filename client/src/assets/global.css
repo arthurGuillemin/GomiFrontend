@@ -71,13 +71,7 @@ p {
   cursor: pointer;
 }
 
-button {
-  color: #3f56ed;
-  border: none;
-  background-color: transparent;
-  font-size: 15px;
-  cursor: pointer;
-}
+
 
 .startBtn {
   background-color: #5be189;
@@ -272,12 +266,7 @@ img {
     max-width: 80%;
   }
 
-  .inputWrapper {
-    width: 100%;
-    flex-direction: column;
-    height: auto;
-    border-radius: 10px;
-  }
+
 
   .fileName,
   .placeholderText {
@@ -299,4 +288,34 @@ img {
   .loadingText {
     font-size: 14px;
   }
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  height: inherit;
+}
+
+.fileInputLabel {
+  height: 48px;
+  border-radius: 12px;
+  padding: 0 12px;
+  display: flex-end;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.sendButton {
+  height: 48px;
+  width: 100%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ba68c8;
+  border: none;
+  color: white;
+}
+
 }

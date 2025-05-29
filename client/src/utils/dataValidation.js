@@ -11,9 +11,9 @@ export const validateSignupInput = ({ email, password }) => {
   try {
     const result = zxcvbn(password);
     const score = result.score;
-    const reason = result.feedback.warning || "Mot de passe correct";
+    const reason = result.feedback.warning;
 
-    if (score < 3) {
+    if (score < 2) {
       return {
         isValid: false,
         message: `Mot de passe trop faible : ${reason}`,
