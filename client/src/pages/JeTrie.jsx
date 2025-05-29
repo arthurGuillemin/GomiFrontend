@@ -51,20 +51,24 @@ const translateMaterial = (mat) => {
 const materialToColor = (material) => {
   switch (material.toLowerCase()) {
     case 'papier':
+      return 'jaune';
     case 'carton':
+      return 'jaune';
     case 'papier/carton':
+      return 'jaune';
     case 'plastique':
+      return 'jaune';
     case 'métal':
       return 'jaune';
     case 'verre':
       return 'verte';
     case 'déchets organiques':
-      return 'marron';
+      return 'verte';
     case 'ordures ménagères':
     case 'trash':
       return 'grise';
     default:
-      return 'grise';
+      return 'verte';
   }
 };
 
