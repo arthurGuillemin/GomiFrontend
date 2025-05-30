@@ -55,7 +55,6 @@ section img:hover {
 h1 {
   font-size: 60px;
   font-weight: bold;
-  margin: 0;
 }
 
 h2 {
@@ -284,8 +283,11 @@ button:hover,
     width: 100%;
   }
 
-  h1 {
+  h1{
     font-size: 36px;
+  }
+  .jeTrieHome h1{
+    padding-top: 10%; /*Pareil rustine*/
   }
 
   .title-page{

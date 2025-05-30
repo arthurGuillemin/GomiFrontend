@@ -34,9 +34,7 @@ const handleSave = async () => {
 
         const updatedUser = await updateUserdata(user.id, token, updatePayload);
         update(updatePayload)
-        alert('Profil mis a jour');
-        
-        console.log(updatedUser);
+        alert('Profil mis a jour');        
     } catch (error) {
         alert("Erreur lors de la mise a jour du profil");
         console.error(error);
