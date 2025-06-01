@@ -306,6 +306,9 @@ button:hover,
   img{
     max-width: 90%;
   }
+  .home-trie{
+      padding-right: 1rem;
+  }
   .earth-home {
     max-width: 90%;
     margin: 0 auto;

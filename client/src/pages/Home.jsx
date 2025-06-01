@@ -40,7 +40,7 @@ const Home = () => {
           )}
         </section>
         <section>
-          <img src={TrashyFriends}  />
+          <img className="home-trie" src={TrashyFriends}  />
         </section>
       </article>
       <article className='jeCuisineHome'>
