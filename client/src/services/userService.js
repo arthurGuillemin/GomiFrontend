@@ -22,3 +22,23 @@ export const updateUserdata = async (userId, token, updatedData) => {
     throw error;
   }
 };
+
+
+export const deleteUser = async (userId , token) =>{
+  try {
+    const response = await axios.delete(
+      `${API_URL}/${userId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting User' , error);
+    throw error;
+  }
+}
