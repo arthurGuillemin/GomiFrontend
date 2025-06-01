@@ -303,8 +303,10 @@ button:hover,
     max-width: 100%;
   }
 
-
-  img {
+  img{
+    max-width: 90%;
+  }
+  .earth-home {
     max-width: 90%;
     margin: 0 auto;
   }

@@ -22,7 +22,7 @@ const Home = () => {
             )}
           </section>
           <section>
-            <img src={EarthGirl} />
+            <img className='earth-home' src={EarthGirl} />
           </section>
         </>
       </article>

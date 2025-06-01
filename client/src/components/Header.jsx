@@ -93,7 +93,7 @@ const Header = () => {
           </div>
         </a>
         {isAuthenticated && (
-          <span style={styles.welcomeText}>Bienvenue, {user.username}</span>
+          <span className='username' style={styles.welcomeText}>Bienvenue, {user.username}</span>
         )}
       </div>
 
@@ -153,7 +153,6 @@ const styles = {
     fontSize: '18px',
     color: '#80ED99',
     marginTop: '10px',
-    marginLeft: '50px',
   },
   nav: {
     display: 'flex',

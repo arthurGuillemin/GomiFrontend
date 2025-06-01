@@ -51,8 +51,8 @@ const ContactPage = () => {
       <img src={contactIllustration} alt="Contact" style={styles.image} />
       <div style={styles.content}>
         <a href='https://github.com/yelineeee' className="contact-link"><h1 style={styles.title}>Kelly Goncalves Gama - Développeuse react</h1></a>
-        <a href='https://github.com/arthurGuillemin' className="contact-link"><h1 style={styles.title}>Arthur Guillemin - Développeur Back & IA</h1></a>
-        <a href='https://github.com/gladiaaa' className="contact-link"><h1 style={styles.title}>Ryan Annic - Développeur Ia</h1></a>
+        <a href='https://github.com/arthurGuillemin' className="contact-link"><h1 style={styles.title}>Arthur Guillemin - Développeur Fullstack</h1></a>
+        <a href='https://github.com/gladiaaa' className="contact-link"><h1 style={styles.title}>Ryan Annic - Développeur Fullstack</h1></a>
         <a href='https://github.com/emilie-caverne' className="contact-link"><h1 style={styles.title}>Emilie Caverne - Développeuse react</h1></a>
       </div>
     </div>
