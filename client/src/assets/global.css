@@ -286,6 +286,14 @@ button:hover,
   h1{
     font-size: 36px;
   }
+
+  .jeTrieHome img,
+.jeCuisineHome img {
+  width: auto;
+  max-width: 300px;
+  height: auto;
+}
+
   .jeTrieHome h1{
     padding-top: 10%; /*Pareil rustine*/
   }
