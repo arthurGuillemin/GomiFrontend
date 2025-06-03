@@ -2,7 +2,7 @@
 import { FiSearch } from "react-icons/fi";
 import { FaArrowRight } from "react-icons/fa";
 import { useState, useImperativeHandle, forwardRef, useRef } from "react";
-import styles from "./ImageSearch.module.css";
+import styles from "./imageSearch.module.css";
 
 const ImageSearch = forwardRef(({ onImageSelected, onSend, variant }, ref) => {
   const [selectedImage, setSelectedImage] = useState(null);
