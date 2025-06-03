@@ -1,0 +1,127 @@
+.mainHome {
+  background: linear-gradient(135deg, #e0ffe6 0%, #ffffff 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.jeTrieHome {
+  background-color: rgb(186, 104, 200, 0.05);
+  margin-top: -80px;
+  height: 100%;
+}
+
+.jeCuisineHome {
+  background-color: rgb(255, 193, 0, 0.05);
+}
+
+.mainHome button,
+.startBtn {
+  background-color: #5be189;
+  color: white;
+  border: none;
+  padding: 10px 60px;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mainHome button:hover,
+.startBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:active,
+.startBtn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+h1::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: #5be189;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+h1:hover::after {
+  transform: scaleX(1);
+}
+
+img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+}
+
+.jeCuisineHome img {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.earth-home {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.home-trie {
+  padding-right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .jeTrieHome img,
+  .jeCuisineHome img {
+    max-width: 300px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+    .home-trie{
+      padding-right: 1rem;
+  }
+  .earth-home {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+    .title-page{
+    padding-top: 5rem; /* Emy ou Kelly : Rustine pour l'instant (le titre <h1>je trie <h1/> sur le page Jetrie.jsx ne s'affiche pas de la mm maniere que sur Je-cuisine*/
+  }
+
+  img {
+    max-width: 90%;
+  }
+}

@@ -14,19 +14,6 @@ article {
   box-sizing: border-box;
 }
 
-.mainHome {
-  background-color: rgb(128, 237, 153, 0.05);
-}
-
-.jeTrieHome {
-  background-color: rgb(186, 104, 200, 0.05);
-  margin-top: -80px;
-  height: '100%';
-}
-
-.jeCuisineHome {
-  background-color: rgb(255, 193, 0, 0.05);
-}
 
 section {
   flex: 1;
@@ -39,17 +26,6 @@ section img {
 section img:hover {
   transform: scale(1.03) translateY(-5px);
 } 
-  .mainHome {
-  background: linear-gradient(135deg, #e0ffe6 0%, #ffffff 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
 
 h1 {
@@ -69,37 +45,7 @@ p {
   line-height: 1.5;
   max-width: 600px;
   margin: 30px 0;
-  text-align: center;
-}
-
-.mainHome p {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 20px;
-  line-height: 1.5;
-  max-width: 450px;
-  margin: 30px 0;
-}
-
-.mainHome button {
-  background-color: #5be189;
-  color: white;
-  border: none;
-  padding: 10px 60px;
-  font-size: 15px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-
-
-.startBtn {
-  background-color: #5be189;
-  color: white;
-  border: none;
-  padding: 10px 60px;
-  font-size: 15px;
-  border-radius: 20px;
-  cursor: pointer;
+  text-align: justify;
 }
 
 img {
@@ -109,167 +55,11 @@ img {
   display: block;
 }
 
-.jeCuisineHome img {
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.searchContainer {
-  display: flex;
-  align-items: center;
-}
-
-.inputWrapper {
-  display: flex;
-  border-radius: 15px;
-  overflow: hidden;
-  width: 500px;
-  height: 50px;
-}
-
-.jeCuisineHome .inputWrapper {
-  border: 3px solid #ffc107;
-}
-
-.jeTrieHome .inputWrapper {
-  border: 3px solid #ba68c8;
-}
-
-.fileInputLabel {
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  flex: 1;
-  cursor: pointer;
-}
-
-.fileInput {
-  display: none;
-}
-
-.sendButton {
-  border: none;
-  width: 60px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.jeCuisineHome .sendButton {
-  background-color: #ffc107;
-}
-
-.jeTrieHome .sendButton {
-  background-color: #ba68c8;
-}
-
-.fileName {
-  margin-left: 10px;
-  font-size: 14px;
-  color: #2e2e2e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 200px;
-}
-
-.placeholderText {
-  margin-left: 10px;
-  font-size: 14px;
-  color: #858585;
-}
-
-.preview-container {
-  position: relative;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.preview-image {
-  max-width: 150px;
-  border-radius: 20px;
-}
-
-.close-preview-button {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 20px;
-  text-align: center;
-  color: #333;
-}
-
-.loadingText {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 16px;
-  color: #ba68c8;
-  font-weight: 500;
-  margin-top: -5px;
-  margin-left: 5px;
-  animation: pulse 1.5s infinite;
-  text-align: left;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
-
-.contact-link {
-  text-decoration: none;
-  color: #34C759;
-  transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-  color: #80ED99;
-}
-button,
-.startBtn {
+button{
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover,
-.startBtn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
 
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
-}
 
 
 @media (max-width: 768px) {
@@ -287,20 +77,6 @@ button:hover,
     font-size: 36px;
   }
 
-  .jeTrieHome img,
-.jeCuisineHome img {
-  width: auto;
-  max-width: 300px;
-  height: auto;
-}
-
-  .jeTrieHome h1{
-    padding-top: 10%; /*Pareil rustine*/
-  }
-
-  .title-page{
-    padding-top: 5rem; /* Emy ou Kelly : Rustine pour l'instant (le titre <h1>je trie <h1/> sur le page Jetrie.jsx ne s'affiche pas de la mm maniere que sur Je-cuisine*/
-  }
 
   h2 {
     font-size: 28px;
@@ -314,55 +90,6 @@ button:hover,
   img{
     max-width: 90%;
   }
-  .home-trie{
-      padding-right: 1rem;
-  }
-  .earth-home {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  .jeCuisineHome img {
-    max-width: 80%;
-  }
-
-
-
-  .fileName,
-  .placeholderText {
-    font-size: 12px;
-    max-width: 100%;
-  }
-
-
-
-
-  .loadingText {
-    font-size: 14px;
-  }
-
-
-.fileInputLabel {
-  height: 48px;
-  border-radius: 12px;
-  padding: 0 12px;
-  display: flex-end;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-}
-
-.sendButton {
-  height: 100%;
-  width: 20%;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ba68c8;
-  border: none;
-  color: white;
-}
 
 }
 

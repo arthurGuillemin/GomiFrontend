@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import '../assets/global.css';
+import styles from './trie.module.css'
 import TrashyFriends from '/trashyFriends.svg';
 
 
 import TrashPopup from '../components/TrashResult/TrashPopup.jsx';
-import TrashFullPage from '../components/TrashResult/TrashFullPage.jsx';
 import { classifyWasteImage } from '../services/gradioTrashService';
 import ImageSearch from '../components/imageSearch.jsx';
 
@@ -114,12 +114,14 @@ const  displayPreview =(file) =>{
     }
   };
 
+ 
+
   return (
     <div>
-      <article className="jeTrieHome">
+      <article className= {`${styles['jeTrieHome']} ${styles['fade-in-up']}`}>
         <section>
-          <div className=' fade-in-up'>
-            <h1 className='title-page'>Je trie</h1>
+          <div className={styles}>
+            <h1 className={styles['title-page']}>Je trie</h1>
             <p>
               Prenez une photo de votre déchet pour savoir instantanément dans quelle
               poubelle il doit aller. Verre, plastique, compost ou ordures : l’appli vous
@@ -128,23 +130,23 @@ const  displayPreview =(file) =>{
             </p>
           </div>
 
-          <ImageSearch  ref={imageSearchRef} onSend={handleSend} onImageSelected={displayPreview} />
+          <ImageSearch  ref={imageSearchRef} onSend={handleSend} onImageSelected={displayPreview} variant="trie"  />
 
           {previewUrl && (
-            <div className="preview-container">
+            <div className={styles['preview-container']}>
               <img
                 src={previewUrl}
                 alt="Aperçu du déchet"
-                className="preview-image"
+                className={styles['preview-image']}
               />
-              <button className="close-preview-button" onClick={resetPreview}>×</button>
+              <button className={styles['close-preview-button']} onClick={resetPreview}>×</button>
             </div>
           )}
 
-          {loading && <p className="loadingText">Analyse en cours...</p>}
+          {loading && <p className={styles['loadingText']}>Analyse en cours...</p>}
           {error && <p className="errorText">{error}</p>}
         </section>
-        <section className=' fade-in-up'>
+        <section className={styles['fade-in-up']}>
           <img src={TrashyFriends}  />
         </section>
       </article>

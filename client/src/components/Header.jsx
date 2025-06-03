@@ -2,20 +2,18 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Menu, User } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import { Link, useLocation } from 'react-router-dom';
+import styles from './Header.module.css';
 
 const Header = () => {
-  const { isAuthenticated, user , token } = useContext(AuthContext);
+  const { isAuthenticated, user } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [hoveredLink, setHoveredLink] = useState(null);
   const location = useLocation();
-  
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
-
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -84,114 +82,41 @@ const Header = () => {
     ));
 
   return (
-    <header style={styles.header}>
+    <header className={styles.header}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
         <a href="/" style={{ textDecoration: 'none' }}>
-          <div style={{ ...styles.logoContainer, ...(isMobile && { marginLeft: '-10px' }) }}>
-            <img src="/logo.svg" alt="Logo" style={styles.logo} />
-            <span style={styles.logoText}>Gomi</span>
+          <div className={`${styles.logoContainer} ${isMobile ? 'ml--10' : ''}`}>
+            <img src="/logo.svg" alt="Logo" className={styles.logo} />
+            <span className={styles.logoText}>Gomi</span>
           </div>
         </a>
         {isAuthenticated && (
-          <span className='username' style={styles.welcomeText}>Bienvenue, {user.username}</span>
+          <span className={styles.welcomeText}>Bienvenue, {user.username}</span>
         )}
       </div>
 
       {isAuthenticated && (
         <>
           {isMobile ? (
-            <div style={styles.burgerMenu} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <div className={styles.burgerMenu} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <Menu size={30} />
             </div>
           ) : (
-            <nav style={styles.nav}>{renderLinks()}</nav>
+            <nav className={styles.nav}>{renderLinks()}</nav>
           )}
         </>
       )}
 
       {isMenuOpen && (
         <>
-          <div style={styles.overlay} onClick={() => setIsMenuOpen(false)} />
-          <nav style={styles.navMobile}>
+          <div className={styles.overlay} onClick={() => setIsMenuOpen(false)} />
+          <nav className={styles.navMobile}>
             {renderLinks()}
           </nav>
         </>
       )}
     </header>
   );
-};
-
-const styles = {
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px 20px',
-    borderBottom: '1px solid #e5e5e5',
-    height: '60px',
-    position: 'relative',
-    backgroundColor: '#fff',
-  },
-  logoContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-  },
-  logo: {
-    width: '50px',
-    height: '50px',
-  },
-  logoText: {
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    fontFamily: "'Josefin Sans', sans-serif",
-    color: '#333',
-    marginTop: '10px',
-  },
-  welcomeText: {
-    fontFamily: "'Josefin Sans', sans-serif",
-    fontSize: '18px',
-    color: '#80ED99',
-    marginTop: '10px',
-  },
-  nav: {
-    display: 'flex',
-    gap: '20px',
-    marginRight: '40px',
-    marginTop: '10px',
-  },
-  burgerMenu: {
-    display: 'block',
-    cursor: 'pointer',
-    marginTop: '10px',
-  },
-  navMobile: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
-    top: '80px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '85%',
-    backgroundColor: '#fff',
-    border: '1px solid #e5e5e5',
-    borderRadius: '0 0 8px 8px',
-    padding: '15px 20px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-    zIndex: 1000,
-    gap: '15px',
-  },
-  overlay: {
-    position: 'fixed',
-    top: 80,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-    zIndex: 999,
-  },
 };
 
 export default Header;

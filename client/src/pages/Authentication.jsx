@@ -5,6 +5,7 @@ import { signup, login as loginService } from '../services/authService';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { validateSignupInput } from '../utils/dataValidation';
+import styles from './Authentication.module.css';
 
 const Authentication = () => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -92,35 +93,35 @@ const Authentication = () => {
     }
 
     return (
-        <div style={styles.authContainer}>
-            {!isMobile && <h1 style={styles.authTitle}>Rejoignez-nous</h1>}
+       <div className={styles.authContainer}>
+            {!isMobile && <h1 className={styles.authTitle}>Rejoignez-nous</h1>}
 
-            <div style={styles.authContent}>
+            <div className={styles.authContent}>
                 {!isMobile && (
                     <>
-                        <div style={{ ...styles.formContainer, ...styles.left }}>
-                            <h2 style={styles.subtitle}>Créez votre compte</h2>
+                        <div  className={`${styles.formContainer} ${styles.left}`}>
+                            <h2 className={styles.subtitle}>Créez votre compte</h2>
                             <InputField label="Pseudo" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
                             <InputField label="Email" placeholder="example@domain.com" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
                             <InputField label="Mot de passe" type="password" isPassword placeholder="••••••••" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                             <InputField label="Confirmation du mot de passe" type="password" isPassword placeholder="••••••••" value={confirmSingupPassword} onChange={(e) => setConfirmSignupPassword(e.target.value)} />
-                            {errorMessage && <p style={styles.errorText}>{errorMessage}</p>}
-                            {successMessage && <p style={styles.successText}>{successMessage}</p>}
-                            <div style={styles.buttonWrapper}>
+                            {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
+                            {successMessage && <p className={styles.successText}>{successMessage}</p>}
+                            <div className={styles.buttonWrapper}>
                                 <Button label="S'inscrire" onClick={handleSignup} />
                             </div>
                         </div>
-                        <div style={styles.separator} />
+                        <div className={styles.separator} />
                     </>
                 )}
 
                 {(!isMobile || !isSignUpMobile) && (
-                    <div style={{ ...styles.formContainer, ...styles.right }}>
-                        <h2 style={styles.subtitle}>Connectez-vous</h2>
+                    <div className={`${styles.formContainer} ${styles.right}`}>
+                        <h2 className={styles.subtitle}>Connectez-vous</h2>
                         <InputField label="Email" placeholder="example@domain.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
                         <InputField label="Mot de passe" type="password" isPassword placeholder="••••••••" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
-                        {errorMessage && <p style={styles.errorText}>{errorMessage}</p>}
-                        <div style={styles.buttonWrapper}>
+                        {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
+                        <div className={styles.buttonWrapper}>
                             <Button label="Se connecter" variant="outlined" onClick={handleLogin} />
                         </div>
                         {isMobile && (
@@ -136,15 +137,15 @@ const Authentication = () => {
                 )}
 
                 {isMobile && isSignUpMobile && (
-                    <div style={{ ...styles.formContainer, ...styles.left }}>
-                        <h2 style={styles.subtitle}>Créez votre compte</h2>
+                    <div className={`${styles.formContainer} ${styles.left}`}>
+                        <h2 className={styles.subtitle}>Créez votre compte</h2>
                         <InputField label="Pseudo" placeholder="Pseudo" value={username} onChange={(e) => setUsername(e.target.value)} />
                         <InputField label="Email" placeholder="Votre email" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
                         <InputField label="Mot de passe" type="password" isPassword placeholder="********" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                         <InputField label="Confirmation du mot de passe" type="password" isPassword placeholder="********" value={confirmSingupPassword} onChange={(e) => setConfirmSignupPassword(e.target.value)} />
-                        {errorMessage && <p style={styles.errorText}>{errorMessage}</p>}
-                        {successMessage && <p style={styles.successText}>{successMessage}</p>}
-                        <div style={styles.buttonWrapper}>
+                        {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
+                        {successMessage && <p className={styles.successText}>{successMessage}</p>}
+                        <div className={styles.buttonWrapper}>
                             <Button label="S'inscrire" onClick={handleSignup} />
                         </div>
                         <div>
@@ -158,7 +159,7 @@ const Authentication = () => {
                 )}
             </div>
 
-            <div style={styles.authIllustration}>
+            <div className={styles.authIllustration}>
                 <img
                     src="/Together-cuate.svg"
                     alt="Illustration"
@@ -167,80 +168,13 @@ const Authentication = () => {
                         backgroundColor: 'transparent',
                         transform: isMobile ? 'none' : 'translateX(300px)',
                     }}
-                />
+                    />
+
             </div>
         </div>
     );
 };
 
-const styles = {
-    authContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '100%',
-        height: '100vh',
-        fontFamily: "'Josefin Sans', sans-serif",
-    },
-    authTitle: {
-        marginTop: '20px',
-        fontSize: '2.5rem',
-        color: '#333',
-    },
-    authContent: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        overflow: 'hidden',
-        position: 'relative',
-        flexWrap: 'wrap',
-    },
-    formContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '30px',
-        flex: 1,
-    },
-    left: {
-        alignItems: 'center',
-    },
-    right: {
-        alignItems: 'center',
-    },
-    subtitle: {
-        fontSize: '1.5rem',
-        marginBottom: '15px',
-        color: '#80ED99',
-        textAlign: 'center',
-    },
-    buttonWrapper: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-        marginTop: '20px',
-    },
-    separator: {
-        width: '1px',
-        backgroundColor: '#e5e5e5',
-        height: '100%',
-    },
-    authIllustration: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '10px',
-        height: '100px',
-    },
-    errorText: {
-        color: 'red',
-        marginTop: '10px',
-        fontSize: '0.9rem',
-    },
-    successText: {
-        color: 'green',
-        marginTop: '10px',
-        fontSize: '0.9rem',
-    },
-};
+
 
 export default Authentication;

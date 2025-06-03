@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FoodieGirly from '/foodieGirly.svg';
 import '../assets/global.css';
+import styles from './cuisine.module.css';
 import ReactMarkdown from 'react-markdown';
 
 import { AuthContext } from '../context/AuthContext';
@@ -16,31 +17,24 @@ const JeCuisine = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const handleSend = async (file) => {
+    setPreviewUrl(URL.createObjectURL(file));
+    setIngredients([]);
+    setRecette(null);
+    setError('');
+    setLoading(true);
 
-const handleSend = async (file) => {
-  setPreviewUrl(URL.createObjectURL(file));
-  setIngredients([]);
-  setRecette(null);
-  setError('');
-  setLoading(true);
-
-  try {
-    const result = await generateRecipeFromImage(file);
-
-    setIngredients(result.ingredients || []);
-    setRecette({
-      title: result.title,
-      steps: result.steps,
-    });
-  } catch (err) {
-    console.error(err);
-    setError('Erreur lors de la génération de la recette.');
-  } finally {
-    setLoading(false);
-  }
-};
-
-
+    try {
+      const result = await generateRecipeFromImage(file);
+      setIngredients(result.ingredients || []);
+      setRecette({ title: result.title, steps: result.steps });
+    } catch (err) {
+      console.error(err);
+      setError('Erreur lors de la génération de la recette.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const resetPreview = () => {
     setPreviewUrl('');
@@ -52,7 +46,7 @@ const handleSend = async (file) => {
 
   return (
     <div>
-      <article className="jeCuisineHome fade-in-up">
+      <article className={`${styles.jeCuisineHome} ${styles['fade-in-up']}`}>
         <section>
           <div>
             <h1>Je cuisine</h1>
@@ -60,17 +54,31 @@ const handleSend = async (file) => {
               Prenez une photo de l’intérieur de votre frigo et découvrez automatiquement les ingrédients détectés. Une façon simple et rapide de garder un œil sur ce que vous avez, éviter le gaspillage et trouver des idées de recettes adaptées à ce que vous avez sous la main !
             </p>
           </div>
+          <ImageSearch
+            ref={imageSearchRef}
+            onSend={handleSend}
+            variant="cuisine" 
+          />
 
-
-          <ImageSearch ref={imageSearchRef} onSend={handleSend} />
           {previewUrl && (
-            <div className="preview-container">
-              <img src={previewUrl} alt="Aperçu du frigo" className="preview-image" />
-              <button className="close-preview-button" onClick={resetPreview}>×</button>
+            <div className={styles['preview-container']}>
+              <img
+                src={previewUrl}
+                alt="Aperçu du frigo"
+                className={styles['preview-image']}
+              />
+              <button
+                className={styles['close-preview-button']}
+                onClick={resetPreview}
+              >
+                ×
+              </button>
             </div>
           )}
 
-          {loading && <p className="loadingText">Génération en cours...</p>}
+          {loading && (
+            <p className={styles.loadingText}>Génération en cours...</p>
+          )}
           {error && <p className="errorText">{error}</p>}
 
           {ingredients.length > 0 && (
@@ -84,22 +92,24 @@ const handleSend = async (file) => {
             </div>
           )}
 
-
           {recette && (
             <div style={{ marginTop: '1.5rem' }}>
               <h2>🍽️ Recette générée :</h2>
-              <h3 style={{ marginTop: '1rem', color: '#4caf50' }}>{recette.title}</h3>
-
+              <h3 style={{ marginTop: '1rem', color: '#4caf50' }}>
+                {recette.title}
+              </h3>
               <h4>📝 Étapes :</h4>
-              <ol style={{
-                background: '#f9f9f9',
-                padding: '1rem',
-                borderRadius: '10px',
-                listStylePosition: 'inside',
-                lineHeight: '1.6',
-              }}>
+              <ol
+                style={{
+                  background: '#f9f9f9',
+                  padding: '1rem',
+                  borderRadius: '10px',
+                  listStylePosition: 'inside',
+                  lineHeight: '1.6',
+                }}
+              >
                 {recette.steps
-                  .filter(step => !/^\d+\.?$/.test(step.trim()))
+                  .filter((step) => !/^\d+\.?$/.test(step.trim()))
                   .map((step, i) => (
                     <li key={i} style={{ marginBottom: '0.5rem' }}>
                       {step.charAt(0).toUpperCase() + step.slice(1)}
@@ -119,5 +129,4 @@ const handleSend = async (file) => {
 };
 
 export default JeCuisine;
-
 

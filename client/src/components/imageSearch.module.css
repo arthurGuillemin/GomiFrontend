@@ -1,0 +1,102 @@
+.searchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.inputWrapper {
+  display: flex;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 500px;
+  height: 50px;
+}
+
+.inputWrapperTrie {
+  border: 3px solid #ba68c8;
+}
+
+.inputWrapperCuisine {
+  border: 3px solid #ffc107;
+}
+
+.fileInputLabel {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.fileInput {
+  display: none;
+}
+
+.placeholderText {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #858585;
+}
+
+.fileName {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #2e2e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.sendButton {
+  border: none;
+  width: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sendButtonTrie {
+  background-color: #ba68c8;
+}
+
+.sendButtonCuisine {
+  background-color: #ffc107;
+}
+
+@media (max-width: 768px) {
+  .fileName,
+  .placeholderText {
+    font-size: 12px;
+    max-width: 100%;
+  }
+
+
+
+
+  .loadingText {
+    font-size: 14px;
+  }
+
+
+.fileInputLabel {
+  height: 48px;
+  border-radius: 12px;
+  padding: 0 12px;
+  display: flex-end;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.sendButton {
+  height: 100%;
+  width: 20%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: white;
+}
+}

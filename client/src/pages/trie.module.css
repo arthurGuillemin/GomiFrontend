@@ -1,0 +1,84 @@
+.jeTrieHome {
+  background-color: rgb(186, 104, 200, 0.05);
+  height: '100%';
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+.preview-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
+.preview-image {
+  max-width: 150px;
+  border-radius: 20px;
+}
+
+.close-preview-button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.loadingText {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  color: #ba68c8;
+  font-weight: 500;
+  margin-top: -5px;
+  margin-left: 5px;
+  animation: pulse 1.5s infinite;
+  text-align: left;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .jeTrieHome img{
+  width: auto;
+  max-width: 300px;
+  height: auto;
+}
+
+  .jeTrieHome h1{
+    padding-top: 10%; /*Pareil rustine*/
+  }
+
+}
