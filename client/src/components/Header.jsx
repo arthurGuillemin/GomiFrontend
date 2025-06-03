@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Menu, User } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './Header.module.css';
+import styles from './header.module.css';
 
 const Header = () => {
   const { isAuthenticated, user } = useContext(AuthContext);
