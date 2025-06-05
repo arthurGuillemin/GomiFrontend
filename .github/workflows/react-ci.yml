@@ -21,11 +21,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Installer depedencies
+      - name: Installer dependencies
         run: npm install
+        working-directory: client
 
-      - name: Lint 
+      - name: Lint
         run: npm run lint
+        working-directory: client
 
       - name: Build React
         run: npm run build
+        working-directory: client
