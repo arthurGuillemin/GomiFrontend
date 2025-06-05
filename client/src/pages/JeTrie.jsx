@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import '../assets/global.css';
 import styles from './trie.module.css'
 import TrashyFriends from '/trashyFriends.svg';
@@ -85,7 +85,7 @@ const  displayPreview =(file) =>{
   try {
     const data = await classifyWasteImage(file);
     if (data.length > 0) {
-      const { objet, poubelle: rawMaterial } = data[0];
+      const { poubelle: rawMaterial } = data[0];
       const materialFr = translateMaterial(rawMaterial);
       const color      = materialToColor(materialFr);
       setPopupData({ trashName: materialFr,  color });

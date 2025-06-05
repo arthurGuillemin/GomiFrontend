@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState, useRef } from 'react';
 import FoodieGirly from '/foodieGirly.svg';
 import '../assets/global.css';
 import styles from './cuisine.module.css';

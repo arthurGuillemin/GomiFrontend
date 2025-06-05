@@ -1,4 +1,3 @@
-import React, { useEffect, useState , useContext } from 'react';
 import contactIllustration from '/contact.svg';
 import styles from './contact.module.css'
 const ContactPage = () => {

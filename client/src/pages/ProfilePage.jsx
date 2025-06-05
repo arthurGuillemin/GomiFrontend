@@ -15,7 +15,6 @@ const ProfilePage = () => {
   const [email, setEmail] = useState('');
   const [originalUsername, setOriginalUsername] = useState('');
   const [originalEmail, setOriginalEmail] = useState('');
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -27,13 +26,6 @@ const ProfilePage = () => {
     }
   }, [user]);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    const handleMediaChange = (e) => setIsMobile(e.matches);
-    handleMediaChange(mediaQuery);
-    mediaQuery.addEventListener('change', handleMediaChange);
-    return () => mediaQuery.removeEventListener('change', handleMediaChange);
-  }, []);
 
   const handleLogout = () => {
     logout();

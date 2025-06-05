@@ -46,7 +46,7 @@ const Home = () => {
       <article className={styles.jeCuisineHome}>
         <section>
           <h1>Je cuisine</h1>
-          <p>Prenez une photo de l’intérieur de votre frigo et découvrez automatiquement les ingrédients détectés. Une façon simple et rapide de garder un œil sur ce que vous avez, éviter le gaspillage et trouver des idées de recettes adaptées à ce que vous avez sous la main !</p>
+          <p>Prenez une photo de l’intérieur de votre frigo et découvrez automatiquement les ingrédients détectés. Une façon simple et rapide de garder un œil sur ce que vous avez, éviter le gaspillage et trouver des idées de recettes adaptées à ce que vous avez sous la main!</p>
           {!isAuthenticated ? (
             <a href='/auth'><button className={styles.startBtn}>Commencer</button></a>
           ) : (

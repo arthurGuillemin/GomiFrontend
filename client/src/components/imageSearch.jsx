@@ -35,7 +35,7 @@ const ImageSearch = forwardRef(({ onImageSelected, onSend, variant }, ref) => {
   };
 
   const handleSend = () => {
-    if (file && onSend) {
+    if (file && onSend && selectedImage) {
       onSend(file);
     }
   };
