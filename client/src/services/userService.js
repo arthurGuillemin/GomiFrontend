@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = ' https://gomibackend.onrender.com/users';
+const API_URL = 'https://flask-backend-gomi-hbbjbyc9agend4fh.francecentral-01.azurewebsites.net/users';
 
 
 export const updateUserdata = async (userId, token, updatedData) => {
