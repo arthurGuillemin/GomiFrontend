@@ -54,6 +54,7 @@
   margin-left: 5px;
   animation: pulse 1.5s infinite;
   text-align: center;
+  padding-top: 2rem;
 }
 @keyframes pulse {
   0% {
@@ -73,6 +74,8 @@
   width: auto;
   max-width: 300px;
   height: auto;
+  padding-left: 1rem;
+
 }
 
 }

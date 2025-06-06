@@ -111,6 +111,19 @@ img {
   padding-right: 1rem;
 }
 
+@keyframes floatImage {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.earth-home,
+.home-trie,
+.foodie-img {
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+
 @media (max-width: 768px) {
   .jeTrieHome img,
   .jeCuisineHome img {

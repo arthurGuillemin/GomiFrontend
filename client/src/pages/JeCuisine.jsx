@@ -16,6 +16,10 @@ const JeCuisine = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const  displayPreview =(file) =>{
+      setPreviewUrl(URL.createObjectURL(file));
+};
+
   const handleSend = async (file) => {
     setPreviewUrl(URL.createObjectURL(file));
     setIngredients([]);
@@ -57,6 +61,7 @@ const JeCuisine = () => {
             ref={imageSearchRef}
             onSend={handleSend}
             variant="cuisine" 
+            onImageSelected={displayPreview} 
           />
 
           {previewUrl && (
