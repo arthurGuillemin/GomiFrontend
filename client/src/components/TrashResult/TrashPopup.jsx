@@ -22,12 +22,18 @@ const TrashPopup = ({ trashName, color, onClose }) => {
         <div style={styles.centeredIllustration}>
         <TrashIllustration color={color} />
         </div>
-        <p style={styles.description}>
-          Votre déchet en <strong>{trashName}</strong> va dans la poubelle
-        </p>
-        <h2 style={{ fontFamily: "'Josefin Sans', sans-serif", color: getColor(color) }}>
-          {capitalize(color)}
-        </h2>
+          <p style={styles.description}>
+            Votre déchet en <strong>{trashName}</strong> va dans la poubelle : {' '}
+            <span style={{ 
+              fontFamily: "'Josefin Sans', sans-serif", 
+              color: getColor(color), 
+              fontSize: '2rem', 
+              fontWeight: 'bold' , 
+              paddingLeft: '1.7rem',
+            }}>
+            {capitalize(color)}
+            </span>
+          </p>
       </div>
     </div>
   );
@@ -68,7 +74,6 @@ const styles = {
   },
   title: {
     color: '#B460C1',
-    textAlign: 'left',
     marginBottom: '20px',
     fontFamily: "'Josefin Sans', sans-serif",
   },

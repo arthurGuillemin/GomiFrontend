@@ -24,7 +24,7 @@
 }
 
 .preview-image {
-  max-width: 150px;
+  max-width: 100%;
   border-radius: 20px;
 }
 
@@ -48,12 +48,12 @@
 .loadingText {
   font-family: "Noto Sans", sans-serif;
   font-size: 16px;
-  color: #ba68c8;
+  color: #F6C344;
   font-weight: 500;
   margin-top: -5px;
   margin-left: 5px;
   animation: pulse 1.5s infinite;
-  text-align: left;
+  text-align: center;
 }
 @keyframes pulse {
   0% {

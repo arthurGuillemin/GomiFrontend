@@ -30,7 +30,6 @@
 
 .jeTrieHome {
   background-color: rgb(186, 104, 200, 0.05);
-  margin-top: -80px;
   height: 100%;
 }
 
@@ -49,6 +48,12 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.trieStart{
+  background-color: #b072ff;
+}
+.coockStart{
+  background-color: #F6C344;
+}
 
 .mainHome button:hover,
 .startBtn:hover {
@@ -66,14 +71,24 @@ h1::after {
   content: '';
   display: block;
   height: 2px;
-  background: #5be189;
+  background: #5be189; 
   transform: scaleX(0);
+  transform-origin: left;
   transition: transform 0.3s ease;
 }
 
 h1:hover::after {
   transform: scaleX(1);
 }
+
+.trieTitle::after {
+  background-color: #b072ff;
+}
+
+.cookTitle::after {
+  background-color: #F6C344;
+}
+
 
 img {
   width: 100%;
@@ -117,9 +132,7 @@ img {
     max-width: 90%;
     margin: 0 auto;
   }
-    .title-page{
-    padding-top: 5rem; /* Emy ou Kelly : Rustine pour l'instant (le titre <h1>je trie <h1/> sur le page Jetrie.jsx ne s'affiche pas de la mm maniere que sur Je-cuisine*/
-  }
+
 
   img {
     max-width: 90%;

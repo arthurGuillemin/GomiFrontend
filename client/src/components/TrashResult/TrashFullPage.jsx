@@ -47,7 +47,6 @@ const styles = {
     color: '#B460C1',
     marginBottom: '20px',
     fontFamily: "'Josefin Sans', sans-serif",
-    textAlign: 'left',
   },
   description: {
     fontSize: '20px',
