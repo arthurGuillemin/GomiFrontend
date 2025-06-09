@@ -5,7 +5,7 @@
 Frontend de l'app Gomi -- projet CloudVision
 [Repo principal](https://github.com/arthurGuillemin/Gomi)
 
-##Membres du groupe :
+## Membres du groupe :
 - **Guillemin Arthur**
    - Github: [https://github.com/arthurGuillemin](https://github.com/arthurGuillemin)
 
