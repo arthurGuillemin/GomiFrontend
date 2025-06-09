@@ -1,4 +1,4 @@
-#Gomi ♻️
+# Gomi ♻️
 
 ## Description
 
@@ -43,14 +43,14 @@ Frontend de l'app Gomi -- projet CloudVision
     cd client
     ```
 
-##Lancer avec le dockerfile :
+## Lancer avec le dockerfile :
     ```bash
     docker build -t gomiFrontend .
     docker run -d -p 8080:80 --name front-container gomiFrontend  
     ```
 Cela ouvrira l'application dans votre navigateur par défaut à l'adresse `http://localhost`.
 
-##Ou manuellement
+## Ou manuellement
 
 3. Installez les dépendances :
     ```bash
