@@ -1,7 +1,7 @@
 import { Client } from "@gradio/client";
 import { parseGeneratedRecipe } from '../utils/format';
 
-const clientPromise = Client.connect("ankz22/Fridge_recipe_app");
+const clientPromise = Client.connect("ankz22/Fridge_recipe_app2");
 
 export async function generateRecipeFromImage(imageFile) {
   
