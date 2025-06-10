@@ -2,6 +2,37 @@
   background-color: rgba(255, 193, 0, 0.05);
 }
 
+.modelButtonGroup {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.modelButton {
+  background-color: #f6c344;
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  font-size: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.modelButton:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modelButtonActive {
+  background-color: #f6c344;
+  color: white;
+  font-weight: bold;
+}
+
+
 .fade-in-up {
   animation: fadeInUp 1s ease forwards;
   opacity: 0;

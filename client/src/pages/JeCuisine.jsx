@@ -1,4 +1,4 @@
-import {useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import FoodieGirly from '/foodieGirly.svg';
 import '../assets/global.css';
 import styles from './cuisine.module.css';
@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import { AuthContext } from '../context/AuthContext';
 import ImageSearch from '../components/imageSearch.jsx';
 import { generateRecipeFromImage } from '../services/recipeGenerator';
+import { sendImage } from '../services/recipeGeneratorOllama.js';
 
 const JeCuisine = () => {
   const imageSearchRef = useRef();
@@ -15,29 +16,40 @@ const JeCuisine = () => {
   const [recette, setRecette] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [modelVersion, setModelVersion] = useState('v1');
 
-  const  displayPreview =(file) =>{
-      setPreviewUrl(URL.createObjectURL(file));
+  const displayPreview = (file) => {
+    setPreviewUrl(URL.createObjectURL(file));
+  };
+
+const handleSend = async (file) => {
+  setPreviewUrl(URL.createObjectURL(file));
+  setIngredients([]);
+  setRecette(null);
+  setError('');
+  setLoading(true);
+
+  try {
+    let result;
+
+    if (modelVersion === 'v1') {
+      result = await generateRecipeFromImage(file);
+      setIngredients(result.ingredients || []);
+      setRecette({ title: result.title || '', steps: result.steps || [] });
+    } else {
+      const recetteData = await sendImage(file);
+
+      setIngredients([]);
+      setRecette({ title: 'Recette V2', steps: [recetteData] });
+    }
+  } catch (err) {
+    console.error(err);
+    setError('Erreur lors de la génération de la recette.');
+  } finally {
+    setLoading(false);
+  }
 };
 
-  const handleSend = async (file) => {
-    setPreviewUrl(URL.createObjectURL(file));
-    setIngredients([]);
-    setRecette(null);
-    setError('');
-    setLoading(true);
-
-    try {
-      const result = await generateRecipeFromImage(file);
-      setIngredients(result.ingredients || []);
-      setRecette({ title: result.title, steps: result.steps });
-    } catch (err) {
-      console.error(err);
-      setError('Erreur lors de la génération de la recette.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const resetPreview = () => {
     setPreviewUrl('');
@@ -56,12 +68,37 @@ const JeCuisine = () => {
             <p>
               Prenez une photo de l’intérieur de votre frigo et découvrez automatiquement les ingrédients détectés. Une façon simple et rapide de garder un œil sur ce que vous avez, éviter le gaspillage et trouver des idées de recettes adaptées à ce que vous avez sous la main !
             </p>
+
+<div className={styles.modelButtonGroup}>
+  <button
+    className={`${styles.modelButton} ${modelVersion === 'v1' ? styles.modelButtonActive : ''}`}
+    onClick={() => setModelVersion('v1')}
+  >
+    Modèle Hugging Face (Rapide mais recette simple)
+  </button>
+  <button
+    className={`${styles.modelButton} ${modelVersion === 'v2' ? styles.modelButtonActive : ''}`}
+    onClick={() => setModelVersion('v2')}
+  >
+    Modèle Ollama (Plus lent mais recette plus élaborée)
+  </button>
+</div>
+<div style={{ marginTop: '0.5rem', fontStyle: 'italic', color: '#555' }}>
+  Modèle sélectionné :{" "}
+  <strong style={{ color: modelVersion === 'v1' ? '#f6c344' : '#4caf50' }}>
+    {modelVersion === 'v1'
+      ? 'Hugging Face (V1)'
+      : 'Ollama (V2)'}
+  </strong>
+</div>
+
           </div>
+
           <ImageSearch
             ref={imageSearchRef}
             onSend={handleSend}
-            variant="cuisine" 
-            onImageSelected={displayPreview} 
+            variant="cuisine"
+            onImageSelected={displayPreview}
           />
 
           {previewUrl && (
@@ -133,4 +170,3 @@ const JeCuisine = () => {
 };
 
 export default JeCuisine;
-
